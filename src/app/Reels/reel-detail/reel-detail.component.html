@@ -1,0 +1,146 @@
+<div class="container-xl mt-5">
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="row">
+        <!--Laukas NUOTRAUKAI-->
+        <div class="col-12">
+          <p>Photo</p>
+          <img src="{{reels.photoUrl2}}" alt="" />
+        </div>
+      </div>
+      <div class="row">
+        <!--laukas LINK kur galima pirkti -->
+        <div class="col-6">
+          <p>Links</p>
+          <a href="" target="_blank">Farnell Link</a><br />
+          <a href="" target="_blank">DigiKey Link</a><br />
+          <a href="" target="_blank">Mouser Link</a>
+        </div>
+        <!--laukas BOM kuriem priklaso rite-->
+        <div class="col-6">
+          <p>BOM's</p>
+        </div>
+      </div>
+    </div>
+    <!--laukas detaliai informacijai apie reelsa-->
+    <div class="col-xl-4">
+      <p>Detail info about REEL</p>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Manufacturer number</label>
+        </div>
+        <div class="col-md-6">
+          <h6>{{reels.cMnf}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Kiekis</label>
+        </div>
+        <div class="col-md-6">
+          <h6>{{reels.qty}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Reel ID</label>
+        </div>
+        <div class="col-md-6">
+          <h6>{{reels.id}}</h6>
+        </div>
+      </div>
+
+
+    </div>
+    <!--laukas detaliai informacijai apie reelso komponentą-->
+    <div class="col-xl-4">
+      <p>Detail info about component</p>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Manufacturer number</label>
+        </div>
+        <div class="col-md-6">
+          <h6>{{components.mnf}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Nominal</label>
+        </div>
+        <div class="col-md-6">
+          <h6>{{components.nominal}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Type</label>
+        </div>
+        <div class="col-md-6">
+          <h6>{{components.type}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Size</label>
+        </div>
+        <div class="col-md-6">
+          <h6>{{components.size}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Manufacturer</label>
+        </div>
+        <div class="col-md-6">
+          <h6>{{components.manufacturer}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Nominal</label>
+        </div>
+        <div class="col-md-6">
+          <h6>{{components.nominal}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Description</label>
+        </div>
+        <div class="col-md-6">
+          <h6> {{components.size}} {{components.nominal}} <strong>{{components.mnf}}</strong></h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Detail Description</label>
+        </div>
+        <div class="col-md-6">
+          <h6>{{components.detdescription}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!--laukas LOKACIJOS barcodams ir qr kodams-->
+    <div class="col-xl-12">
+      <p>Location</p><br />
+      <qrcode qrdata="{{reels.location}}" [colorLight]="'#16113a'" [width]="20" [errorCorrectionLevel]="'M'"></qrcode>
+
+
+
+    </div>
+  </div>
+</div>
+{{historyy}}
+<tr *ngFor="let historyy of historyy">
+  <td class="text-center">{{historyy.id}}</td>
+  <td>{{historyy.reelId}}</td>
+  <td>{{historyy.mnf}}</td>
+  <td>{{historyy.oldQty}}</td>
+  <td>-></td>
+  <td>{{historyy.newQty}}</td>
+  <td>{{historyy.oldLocation}}</td>
+  <td>-></td>
+  <td>{{historyy.newLocation}}</td>
+</tr>

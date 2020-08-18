@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Storage</h1>
+
+  <div class="btn-toolbar mb-2 mb-md-0">
+
+  </div>
+
+
+</div>
+
+<div class="row">
+
+
+  <div class="col-6 box border-right">
+    <div class="pt-3 pb-2 mb-3 border-bottom text-center">
+      STORE
+    </div>
+    <app-put-reel></app-put-reel>
+  </div>
+  <div class="col-6 box">
+    <div class="pt-3 pb-2 mb-3 border-bottom text-center">
+      TAKE
+    </div>
+    <app-take-reel></app-take-reel>
+  </div>
+</div>
+
+
+<div class="mt-5">
+  <h1 class="h2">History</h1>
+  <div class="col-12 box border-top">
+    <div class="row">
+      <div class="col-sm-1"><strong>Data</strong></div>
+      <div class="col-sm-1 text-center"><strong>Component ID</strong></div>
+      <div class="col-sm-1 text-center"><strong>Reel ID</strong></div>
+      <div class="col-sm-2"><strong>Manufacturer number</strong></div>
+      <div class="col-sm-3">
+        <div class="row">
+          <div class="col-sm-4"><strong>Old Location</strong></div>
+          <div class="col-sm-2"><strong>-></strong></div>
+          <div class="col-sm-5"><strong>New Location</strong></div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="row">
+          <div class="col-sm-4"><strong>Old QTY</strong></div>
+          <div class="col-sm-3"><strong>-></strong></div>
+          <div class="col-sm-5"><strong>New QTY</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let historyy of historyy" class="col-12 box border-top">
+    <div class="row">
+      <div class="col-sm-1">{{historyy.dateAdded | date}}</div>
+      <div class="col-sm-1 text-center">{{historyy.componentasId}}</div>
+      <div class="col-sm-1 text-center">{{historyy.reelId}}</div>
+      <div class="col-sm-2">{{historyy.mnf}}</div>
+      <div class="col-sm-3">
+        <div class="row">
+          <div class="col-sm-4">{{historyy.oldLocation}}</div>
+          <div class="col-sm-2">-></div>
+          <div class="col-sm-5">{{historyy.newLocation}}</div>
+        </div>
+          
+      </div>
+      <div class="col-sm-2">
+        <div class="row">
+          <div class="col-sm-4 text-center">{{historyy.oldQty}}</div>
+          <div class="col-sm-3">-></div>
+          <div class="col-sm-5 text-center">{{historyy.newQty}}</div>
+        </div>
+      </div>
+      
+    </div>
+      
+  </div>
+</div>

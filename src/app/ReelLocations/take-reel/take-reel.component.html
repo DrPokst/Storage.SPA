@@ -1,0 +1,44 @@
+<form #registerForm="ngForm" (ngSubmit)="SetLocation()">
+
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="pt-3 pb-3 mb-4 border-right text-center">
+                <div class="pt-2 mb-1 text-center">
+                    <label>ID</label>
+                </div>
+                <div class="pt-3 pb-2 mb-3 text-center">
+                    <label>Location/Person/...</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="pt-1 pb-2 mb-3">
+                <div class="pt-2 mb-1">
+                    <input type="text" required name="Id" placeholder="Enter ID Nr Here.." class="form-control" required
+                        [(ngModel)]="model.Id">
+                </div>
+                <div class="pt-3 pb-2 mb-3 text-center">
+                    <input type="text" required name="Mnf" placeholder="Enter Location Here.." class="form-control"
+                        required [(ngModel)]="model.Location">
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <div class="pt-5">
+                <button [disabled]="!registerForm.valid" class="btn btn-sm btn-outline-secondary btn-block"
+                    type="submit"><i class="fa fa-check mr-2"></i>TAKE</button>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+</form>

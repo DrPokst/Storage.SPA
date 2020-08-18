@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">History</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <button class="btn btn-sm btn-secondary" [routerLink]="['/members/', components.id]">Back</button>
+          
+        </div>
+      </div>
+    
+  
+  
+  </div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">History Number</th>
+            <th>Reel ID</th>
+            <th>Manufacturer number</th>
+            <th>Old QTY</th>
+            <th>-></th>
+            <th>New QTY</th>
+            <th>Old Location</th>
+            <th>-></th>
+            <th>New Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let historyy of historyy">
+            <td class="text-center">{{historyy.id}}</td>
+            <td>{{historyy.reelId}}</td>
+            <td>{{historyy.mnf}}</td>
+            <td>{{historyy.oldQty}}</td>
+            <td>-></td>
+            <td>{{historyy.newQty}}</td>
+            <td>{{historyy.oldLocation}}</td>
+            <td>-></td>
+            <td>{{historyy.newLocation}}</td>
+        </tr>
+        
+    </tbody>
+</table>

@@ -1,0 +1,16 @@
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: inherit;
+    height: 300px;
+}
+.qr{
+    height: 100px;
+}
+
+@media print {
+	div {
+		font-size: 5 pt;
+	}
+}

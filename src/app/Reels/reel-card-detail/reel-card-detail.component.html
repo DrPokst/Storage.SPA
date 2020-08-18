@@ -1,0 +1,79 @@
+<div class="profile-img">
+
+    <div class="pb-2 mb-3 border-bottom">
+        <img src="{{reel.photoUrl2}}" alt="" />
+    </div>
+
+
+
+    <div class="printas">
+        <div class="pb-2 mb-3 border-bottom">
+            <div class="row">
+                <div class="col-sm-5 border-right">
+                    Reel ID:
+                </div>
+                <div class="col-sm-7">
+                    {{reel.id}}
+                </div>
+            </div>
+        </div>
+        <div class="pb-2 mb-3 border-bottom">
+            <div class="row">
+                <div class="col-sm-5 border-right">
+                    Mnf:
+                </div>
+                <div class="col-sm-7">
+                    {{reel.cMnf}}
+                </div>
+            </div>
+        </div>
+
+        <div class="pb-2 mb-3 border-bottom">
+            <div class="row">
+                <div class="col-sm-5 border-right sss">
+                    QTY:
+                </div>
+                <div class="col-sm-7">
+                    {{reel.qty}}
+                </div>
+            </div>
+        </div>
+
+        <div class="pb-2 mb-3 border-bottom">
+            <div class="row">
+                <div class="col-sm-5 border-right">
+                    Location:
+                </div>
+                <div class="col-sm-7 qr">
+                    {{reel.location}}
+                    <qrcode [qrdata]=reel.location [width]="60" [errorCorrectionLevel]="'M'" [elementType]="'svg'">
+                    </qrcode>
+
+                </div>
+            </div>
+        </div>
+        <div class="pb-2 mb-3 border-bottom">
+            <div class="row">
+                <div class="col-sm-5 border-right">
+                    Lipdukas <br>
+                    <button class="btn btn-sm btn-outline-secondary" printSectionId="print-section" ngxPrint><i class="fa fa-print" aria-hidden="true"></i>
+                        print</button>
+                </div>
+                <div class="col-sm-7 qr">
+                    <div id="print-section">
+                        <div class="lipdukas">
+
+                            {{reel.cMnf}} <br>
+                            ID: {{reel.id}}
+                            <qrcode qrdata={{reel.id}} [width]="60" [errorCorrectionLevel]="'M'" [elementType]="'svg'">
+                            </qrcode>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a *ngFor="let history of history">{{history.id}} </a>
+</div>

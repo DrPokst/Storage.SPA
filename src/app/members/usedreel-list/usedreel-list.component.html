@@ -1,0 +1,74 @@
+
+ 
+ 
+<button class="btn btn-sm btn-outline-secondary btn-block"  (click)="loadComparedReels()">
+SEARCH REELS
+</button>
+
+
+
+<div class="div mt-2 allign-center" *ngIf="kint >= 1">
+  <div *ngIf="loading else loaded">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="loader">
+          <div class="loader-inner box1"></div>
+          <div class="loader-inner box2"></div>
+          <div class="loader-inner box3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #loaded>
+  <div>
+    <table class="table mt-2">
+      <thead>
+        <tr>
+          <th scope="col">Rites Nr.</th>
+          <th scope="col">Kiekis </th>
+          <th scope="col">Mnf </th>
+          <th scope="col">Rites vieta</th>
+        </tr>
+      </thead>
+      <div *ngIf="ngOnInit()" class="spinner-border text-primary"></div>
+      <tbody>
+        <tr *ngFor="let reels of reels">
+          <td>{{reels.id}}</td>
+          <td>{{reels.qty}}</td>
+          <td>{{reels.cMnf}}</td>
+          <td>
+            <div class="row">
+              <div class="col-sm-6">
+                <qrcode qrdata="{{reels.location}}" [width]="50" [errorCorrectionLevel]="'M'"></qrcode>
+              </div>
+              <div class="col-sm-4">
+                {{reels.location}}
+              </div>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+      <thead>
+        <tr>
+          <th scope="col">Viso ričių</th>
+          <th scope="col">Bendras kiekis </th>
+          <th scope="col"> </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ilgis}}</td>
+          <td>{{suma}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+</div>

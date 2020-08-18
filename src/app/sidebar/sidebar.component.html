@@ -1,0 +1,145 @@
+<div class="page-wrapper chiller-theme toggled">
+
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#">SMART STORAGE</a>
+
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded"
+            src="https://scontent.fvno5-1.fna.fbcdn.net/v/t31.0-8/p960x960/12314206_1062961707060988_1806705491916995182_o.jpg?_nc_cat=100&_nc_sid=85a577&_nc_ohc=sxA9GZnikWcAX-3Ofjs&_nc_ht=scontent.fvno5-1.fna&_nc_tp=6&oh=fd96235cfab8b3f8cf9d5851fdc51f53&oe=5EC40BD7"
+            alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">{{authService.decodedToken?.unique_name  | titlecase}}
+          </span>
+          <span class="user-role">Administrator</span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+        </div>
+      </div>
+      <!-- sidebar-header  -->
+      
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span> <strong>General</strong> </span>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a [routerLink]="['/members']">
+              <i class="fas fa-archive"></i>
+              <span>All components</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a [routerLink]="['/reels']">
+              <i class="fab fa-ravelry"></i>
+              <span>All reels</span>
+              <span class="badge badge-pill badge-danger">25</span>
+            </a>
+
+          </li>
+          <li class="sidebar-dropdown">
+            <a [routerLink]="['/BOM']">
+              <i class="fa fa-shopping-cart"></i>
+              <span>Lists</span>
+            </a>
+          </li>
+
+          <li class="header-menu">
+            <span><strong>Register</strong></span>
+          </li>
+          <li class="sidebar-dropdown">
+            <a [routerLink]="['/register/component']">
+              <i class="fa fa-book"></i>
+              <span>Register component</span>
+              <span class="badge badge-pill badge-warning">NEW</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a [routerLink]="['/register/reel']">
+              <i class="fa fa-book"></i>
+              <span>Register reel</span>
+              <span class="badge badge-pill badge-warning">NEW</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a [routerLink]="['/BOM']">
+              <i class="fa fa-folder"></i>
+              <span>BOM</span>
+              <span class="badge badge-pill badge-primary">Beta</span>
+            </a>
+          </li>
+          <li class="header-menu">
+            <span><strong>Reel Locations</strong></span>
+          </li>
+          <li class="sidebar-dropdown">
+            <a [routerLink]="['/locations/put']">
+              <i class="fa fa-book"></i>
+              <span>Put on the shelf</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a [routerLink]="['/locations/take']">
+              <i class="fa fa-calendar"></i>
+              <span>Take from the shelf</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a [routerLink]="['/locations/both']">
+              <i class="fa fa-folder"></i>
+              <span>.....</span>
+            </a>
+          </li>
+          <li class="header-menu">
+            <span><strong>Extra</strong></span>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-book"></i>
+              <span>Documentation</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a [routerLink]="['/calendar']">
+              <i class="fa fa-calendar"></i>
+              <span>Calendar</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-folder"></i>
+              <span>Examples</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <a *ngIf="loggedIn()" href="#">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-warning notification">3</span>
+      </a>
+      <a *ngIf="loggedIn()" href="#">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a>
+      <a *ngIf="loggedIn()" href="#">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a>
+      <a *ngIf="loggedIn()" (click)="logout()">
+        <i class="fa fa-power-off"></i>
+      </a>
+    </div>
+  </nav>
+
+</div>

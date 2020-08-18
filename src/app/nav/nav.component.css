@@ -1,0 +1,28 @@
+.dropdown-toggle,
+.dropdown-item {
+  cursor: pointer;
+}
+.navbar {
+  margin-bottom: 20px;
+}
+.right {
+  float: right;
+  padding: 0px;
+  height: 50px;
+  color: rgb(0, 0, 0);
+}
+.dropdown {
+  margin-top: 15px;
+}
+.dropdown-menu {
+  margin-left: -20px;
+}
+.form-control, .btn {
+    margin-top: 3px;
+  height: 35px;
+  text-align: center;
+}
+
+.login{
+    text-align: center;
+}

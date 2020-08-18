@@ -1,0 +1,6 @@
+.input{
+    border-style: none;
+}
+pagination-controls .ng2-pagination li.current{
+    background : gray;
+  }

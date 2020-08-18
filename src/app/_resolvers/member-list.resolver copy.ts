@@ -1,0 +1,22 @@
+import { Injectable } from "@angular/core";
+import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
+import { Components } from '../_models/component';
+import { AlertifyService } from '../_services/alertify.service';
+import { ComponentService } from '../_services/component.service';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+@Injectable()
+export class MemberListResolver implements Resolve<Components[]>{
+    constructor(private componentService: ComponentService, private router: Router, private alertify: AlertifyService) {}
+    resolve(route: ActivatedRouteSnapshot): Observable<Components[]>{
+        return this.componentService.getComponents().pipe(
+            catchError(error => {
+                this.alertify.error('Problemos gaunant data');
+                this.router.navigate(['/home']);
+                return of(null);
+            })
+        );
+    }
+}
+

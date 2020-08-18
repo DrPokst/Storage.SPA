@@ -1,0 +1,126 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Registration Form</h1>
+</div>
+
+<form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <div class="col-lg-12 well">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6 input-group-sm">
+                        <label>Manufacturer Number</label>
+                        <input  type="text" 
+                                formControlName="Mnf" 
+                                placeholder="Enter Manufacturer Number.."
+                                class="form-control form-control-sm">
+                    </div>
+                    <div class="col-sm-6 input-group-sm ">
+                        <label>Manufacturer</label>
+                        <input  type="text" 
+                                formControlName="Manufacturer" 
+                                placeholder="Enter Manufacturer.."
+                                class="form-control" >
+                    </div>
+                </div>
+                <div class="input-group-sm ">
+                    <label>Detailed Description</label>
+                    <input  formControlName="Detdescription"
+                            placeholder="Enter Detailed Description.." 
+                            class="form-control">
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3 input-group-sm ">
+                        <label>Buh. Nr.</label>
+                        <input  type="text" 
+                                formControlName="BuhNr" 
+                                placeholder="Enter Buh. Nr. Here.."
+                                class="form-control">
+                    </div>
+                    <div class="col-sm-3 input-group-sm ">
+                        <label>Size</label>
+                        <input  type="text" 
+                                formControlName="Size" 
+                                placeholder="Enter Size Here.." 
+                                class="form-control">
+                    </div>
+                    <div class="col-sm-3 input-group-sm ">
+                        <label for="exampleFormControlSelect1">Type</label>
+                        <select class="form-control" 
+                                formControlName="Type" 
+                                id="exampleFormControlSelect1" >
+                            <option>RES</option>
+                            <option>CAP</option>
+                            <option>IC</option>
+                            <option>DIODE</option>
+                            <option>ETC</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 input-group-sm ">
+                        <label>Nominal</label>
+                        <input  type="text" 
+                                formControlName="Nominal"
+                                placeholder="Enter Nominal Here.."
+                                class="form-control"
+                                >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group-sm ">
+                            <label>Farnell URL</label>
+                            <input  type="text" 
+                                    formControlName="Furl" 
+                                    placeholder="Enter Farnell URL Here.."
+                                    class="form-control" >
+                        </div>
+                        <div class="input-group-sm ">
+                            <label>DigiKey URL</label>
+                            <input  type="text" 
+                                    formControlName="Durl" 
+                                    placeholder="Enter DigiKey URL Here.."
+                                    class="form-control">
+                        </div>
+                        <div class="input-group-sm ">
+                            <label>Mouser URL</label>
+                            <input  type="text" 
+                                    formControlName="Murl" 
+                                    placeholder="Enter Mouser URL Here.."
+                                    class="form-control">
+                        </div>
+                      
+                        <div class="mt-5">
+                            <button [disabled]="!registerForm.valid" class="btn btn-sm btn-outline-secondary btn-block"
+                                type="submit" [routerLink]="['/register/component']"><i class="fa fa-check mr-2"></i>Register</button>  
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6  mt-1">
+                        <label>
+                            Upload Photo
+                        </label>
+                        
+                        <input  type="file"
+                            formControlName="file"
+                            id="file"
+                            class="form-control"
+                            (change)="onFileChange($event)"
+                            (change)="showPreview($event)"
+                        />
+                        <img [src]="imageURL" height="file" width="60%"> 
+                              
+                        
+                    </div>
+                    
+
+
+
+                    
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</form>

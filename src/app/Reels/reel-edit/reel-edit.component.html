@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+    <h1 class="">{{reel.cMnf}}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-sm btn-secondary w-150">Save
+                Changes</button>
+            <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/reels']">Back</button>
+            <button class="btn btn-sm btn-secondary" [routerLink]="['/members']">History</button>
+            <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/reels']" (click)="deleteR()">Delete</button>
+        </div>
+    </div>
+
+</div>
+
+<form #editForm="ngForm" id="editForm" (ngSubmit)="updateReel()">
+<div class="row">
+    <div class="col-4 mt-5">
+        <div class=" border-right">
+            <img src="{{reel.photoUrl2}}" alt="" />
+        </div>
+    </div>
+    <div class="col-8 mt-5">
+        <div class="pb-2 mb-3 border-bottom">
+            <div class="row">
+                <div class="col-sm-5 border-right">
+                    Reel ID:
+                </div>
+                <div class="col-sm-7">
+                    {{reel.id}}
+                </div>
+            </div>
+        </div>
+        <div class="pb-2 mb-3 border-bottom">
+            <div class="row">
+                <div class="col-sm-5 border-right">
+                    Mnf:
+                </div>
+                <div class="col-sm-7">
+                    <input class="form-control input-sm" name="cMnf" id="" cols="5" rows="1" [(ngModel)]="reel.cMnf">
+                </div>
+            </div>
+        </div>
+
+        <div class="pb-2 mb-3 border-bottom">
+            <div class="row">
+                <div class="col-sm-5 border-right">
+                    QTY:
+                </div>
+                <div class="col-sm-7">
+                    <input class="form-control input-sm" name="qty" id="" cols="5" rows="1" [(ngModel)]="reel.qty">
+                </div>
+            </div>
+        </div>
+
+        <div class="pb-2 mb-3 border-bottom">
+            <div class="row">
+                <div class="col-sm-5 border-right">
+                    Location:
+                </div>
+                <div class="col-sm-7 qr">
+                    <qrcode qrdata="{{reel.location}}" [width]="20" [errorCorrectionLevel]="'M'"></qrcode>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</form>
+
+<div *ngIf="editForm.dirty" class="alert alert-info mt-2">
+    <strong>Informacija:</strong> Yra pakeitimu. Neissaugota informacija prarasite
+  </div>

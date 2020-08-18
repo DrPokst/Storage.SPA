@@ -1,0 +1,110 @@
+<div class="container emp-profile text-dark">
+  <form method="post">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+          <img src="{{components.photoUrl}}" alt="" />
+          <div class="file btn btn-lg btn-primary">
+            Change Photo
+            <input type="file" name="file" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h5>
+            {{components.mnf}}
+          </h5>
+          <h6>
+            Ressistor, Capacitor, IC and etc.
+          </h6>
+          <p class="proile-rating">SEARCHED : <span>125 times</span></p>
+          <ul class="nav nav-tabs md-tabs" id="myTabMD" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab-md" data-toggle="tab" href="#home-md" role="tab"
+                aria-controls="home-md" aria-selected="true">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" id="photo-tab-md" data-toggle="tab" href="#photo-md" role="tab"
+                aria-controls="photo-md" aria-selected="true">Photo</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-info btn-sm w-150" [routerLink]="['/members']">Back</button>
+        <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-info btn-sm w-50  ">Save Changes</button>
+        <button class="btn btn-dark btn-sm w-150">Delete</button>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-work">
+          <p>LINKS</p>
+          <a href="https://lt.farnell.com/" target="_blank">Farnell Link</a><br />
+          <a href="https://www.digikey.com/" target="_blank">DigiKey Link</a><br />
+          <a href="https://eu.mouser.com/" target="_blank">Mouser Link</a>
+
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="tab-content " id="myTabContentMD">
+          <form #editForm="ngForm" id="editForm" (ngSubmit)="updateComponents()">
+            <div class="tab-pane fade show active" id="home-md" role="tabpanel" aria-labelledby="home-tab-md">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Manufacturer number</label>
+                </div>
+                <div class="col-md-6">
+                  <textarea name="mnf" id="" cols="5" rows="1" class="form-control"
+                    [(ngModel)]="components.mnf"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Size</label>
+                </div>
+                <div class="col-md-6">
+                  <textarea name="mnf" id="" cols="5" rows="1" class="form-control"
+                    [(ngModel)]="components.size"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Description</label>
+                </div>
+                <div class="col-md-6">
+                  <h6> {{components.size}} {{components.nominal}} {{components.mnf}}</h6>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Type</label>
+                </div>
+                <div class="col-md-6">
+                  <textarea name="type" id="" cols="5" rows="1" class="form-control"
+                    [(ngModel)]="components.type"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Detail Description</label>
+                </div>
+                <div class="col-md-6">
+                  <h6>100 Ohms ±1% 2W Chip Resistor 2512 (6432 Metric) Automotive AEC-Q200 Thick Film</h6>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="tab-pane fade show active" id="photo-md" role="tabpanel" aria-labelledby="photo-tab-md">
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

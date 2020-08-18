@@ -1,0 +1,97 @@
+<main role="main" class="">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+    
+    <div class="row align-items-left">
+      <label class=" mt-2 px-2" for="Size">Sort by: </label>
+      <div class="btn-group float-left">
+        <button type="button" name="orderBy" class="btn btn-sm btn-outline-secondary"
+          [(ngModel)]="componentParams.OrderBy" (click)="loadComponents()" btnRadio="id">ID</button>
+        <button type="button" name="orderBy" class="btn btn-sm btn-outline-secondary"
+          [(ngModel)]="componentParams.OrderBy" (click)="loadComponents()" btnRadio="created">Newest component</button>
+      </div>
+    </div>
+
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <form class="form-inline d-flex justify-content-center  " #form="ngForm" (ngSubmit)="loadComponents()" novalidate>
+        <div class="form-group px-1 mb-2 mb-md-0">
+          <label for="Type">Type: </label>
+          <select class="form-control form-control-sm ml-1" style="width: 100px" id="Type"
+            [(ngModel)]="componentParams.Type" name="Type">
+            <option *ngFor="let Type of TypeList" [value]="Type.value">
+              {{Type.display}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group px-1">
+          <label for="Size">Size: </label>
+          <select class="form-control form-control-sm ml-1" style="width: 100px" id="Size"
+            [(ngModel)]="componentParams.Size" name="Size">
+            <option *ngFor="let Size of SizeList" [value]="Size.value">
+              {{Size.display}}
+            </option>
+          </select>
+        </div>
+        <div class="px-1">
+          <input type="text" required name="BuhNr" placeholder="Enter Buh. Nr.." class="form-control form-control-sm"
+            required [(ngModel)]="componentParams.BuhNr">
+        </div>
+        <div class="px-1">
+          <input type="text" required name="Nominal" placeholder="Enter Nominal.." class="form-control form-control-sm"
+            required [(ngModel)]="componentParams.Nominal">
+        </div>
+        <div class="px-1">
+          <input type="text" required name="mnf" placeholder="Enter Manufacturer Nr.."
+            class="form-control form-control-sm" required [(ngModel)]="componentParams.Mnf">
+        </div>
+
+        <div class="btn-group mr-2">
+          <button type="submit" class="btn btn-sm btn-outline-secondary">Apply filters</button>
+          <button type="button" class="btn btn-sm btn-secondary" (click)="resetFilter()">Clear Filters</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</main>
+
+
+
+
+<div class="container">
+
+  <div class="row">
+    <div *ngFor="let components of components" class="col-lg-2 col-md-3 col-sm-6 mt-2 comp">
+      <app-component-card [components]="components"></app-component-card>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">
+
+  </div>
+  <div class="col-4" >
+    <div class="d-flex justify-content-center mt-2 " *ngIf="pagination.totalItems > 25">
+      <div class="px-1">
+        <pagination class="pagination "
+                    [boundaryLinks]="true" 
+                    [totalItems]="pagination.totalItems" 
+                    [itemsPerPage]="pagination.itempsPerPage"
+                    [(ngModel)]="pagination.currentPage" 
+                    (pageChanged)="pageChanged($event)" 
+                    previousText="&lsaquo;"
+                    nextText="&rsaquo;" 
+                    firstText="&laquo;" 
+                    lastText="&raquo;">
+        </pagination>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="float-right mt-3">
+      <h3>Matches - <strong>{{pagination.totalItems}}</strong> found</h3>
+    </div>
+  </div>
+</div>
