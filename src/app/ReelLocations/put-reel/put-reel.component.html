@@ -6,11 +6,8 @@
                 <div class="pt-2 mb-1 text-center">
                     <label>ID</label>
                 </div>
-                <div class="pt-2 mb-1 text-center">
-                    <label>Location</label>
-                </div>
                 <div class="pt-3 pb-2 mb-3 text-center">
-                    <label>QTY</label>
+                    <label>Sunaudotų komponentų kiekis</label>
                 </div>
             </div>
         </div>
@@ -20,12 +17,8 @@
                     <input type="text" required name="Id" placeholder="Enter ID Here.." class="form-control" required
                         [(ngModel)]="model.Id">
                 </div>
-                <div class="pt-2 mb-1 text-center">
-                    <input type="text" required name="Location" placeholder="Enter Location Here.."
-                        class="form-control" required [(ngModel)]="model.Location">
-                </div>
                 <div class="pt-3 pb-2 mb-3 text-center">
-                    <input type="number" required name="Qty" placeholder="Enter Qty Here.."
+                    <input type="number" required name="Qty" placeholder="Įveskite sunaudotų komponentų skaičių"
                         class="form-control" required [(ngModel)]="model.QTY">
                 </div>
 
@@ -34,12 +27,9 @@
         </div>
         <div class="col-sm-3">
             <div class="pt-5">
-                <button [disabled]="!registerForm.valid" class="btn btn-sm btn-outline-secondary btn-block"
-                    type="submit"><i class="fa fa-check mr-2"></i>Store</button>
+                <button mat-button (click)="openDialog()" [disabled]="!registerForm.valid" class="btn btn-sm btn-outline-secondary btn-block"
+                type="submit"><i class="fa fa-check mr-2"></i>Store</button>
             </div>
-
-
-
         </div>
     </div>
 </form>

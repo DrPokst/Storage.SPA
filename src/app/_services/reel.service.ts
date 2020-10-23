@@ -44,14 +44,45 @@ getReels(page?, itempsPerPage?, componentParams?): Observable<PaginatedResult<Re
         }
         return paginatedResult;
       })
-    )
+    );
 }
 
-getHistory(): Observable<history[]>{
-  return this.http.get<history[]>(this.baseUrl + 'location/history');
+getHistory(page?, itempsPerPage?, componentParams?): Observable<PaginatedResult<history[]>>{
+  const paginatedResult: PaginatedResult<history[]> = new PaginatedResult<history[]>();
+  let params = new HttpParams();
+
+  if (page != null && itempsPerPage != null)
+  {
+    params = params.append('pageNumber', page);
+    params = params.append('pageSize', itempsPerPage);
+  }
+
+  if (componentParams != null)
+  {
+    if (componentParams.CMnf != null) {
+      params = params.append('CMnf', componentParams.CMnf);
+    }
+    if (componentParams.OrderBy != null) {
+      params = params.append('orderBy', componentParams.OrderBy);
+    }
+  }
+
+  return this.http.get<history[]>(this.baseUrl + 'location/history', {observe: 'response', params})
+    .pipe(
+      map(response => {
+        paginatedResult.result = response.body;
+        if (response.headers.get('Pagination') != null) {
+          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'))
+        }
+        return paginatedResult;
+      })
+    );
 }
 getReel(id): Observable<Reels>{
   return this.http.get<Reels>(this.baseUrl + 'reel/' + id);
+}
+getReelMnf(mnf): Observable<Reels>{
+  return this.http.get<Reels>(this.baseUrl + 'reel/PagalMnf/' + mnf);
 }
 updateReel(id: number, reel: Reels){
   return this.http.put(this.baseUrl + 'reel/' + id, reel);

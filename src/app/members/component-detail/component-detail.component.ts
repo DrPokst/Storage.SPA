@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ComponentService } from "src/app/_services/component.service";
 import { AlertifyService } from "src/app/_services/alertify.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Components } from "src/app/_models/components";
 import { history } from "src/app/_models/history";
 import { compOData } from "src/app/_models/compOData";
@@ -37,7 +37,8 @@ export class ComponentDetailComponent implements OnInit {
     private alertify: AlertifyService,
     private route: ActivatedRoute,
     private compareService: CompareService,
-    private odataService: OdataService
+    private odataService: OdataService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -122,6 +123,7 @@ export class ComponentDetailComponent implements OnInit {
     this.alertify.confirm('Are you sure want to delete this photo?', ()=> {
       this.componentService.deleteComponent(this.route.snapshot.params["id"]).subscribe(() => {
         this.alertify.success('Component has been deleted');
+        this.router.navigate(['/members']);
       }, error => {
         this.alertify.error('Failed to deltete');
       });

@@ -1,5 +1,6 @@
 import { Photo } from './photo2';
 import { history } from './history';
+import { Components } from './components'
 
 export interface Reels {
     id: number;
@@ -9,4 +10,5 @@ export interface Reels {
     location?: string;
     photos?: Photo[];
     history?: history[];
+    componentas?: Components;
 }

@@ -7,9 +7,6 @@
     transform: scale(1.0, 1.0);
     transition-duration: 250ms;
     transition-timing-function: ease-out;
-    width: 160px;
-    height: 120px;
-
 }
 .fixed-bottom{
     margin-left: 65%;

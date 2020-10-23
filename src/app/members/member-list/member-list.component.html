@@ -76,6 +76,7 @@
     <div class="d-flex justify-content-center mt-2 " *ngIf="pagination.totalItems > 25">
       <div class="px-1">
         <pagination class="pagination "
+                    *ngIf="pagination"
                     [boundaryLinks]="true" 
                     [totalItems]="pagination.totalItems" 
                     [itemsPerPage]="pagination.itempsPerPage"

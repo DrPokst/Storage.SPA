@@ -7,19 +7,14 @@ SEARCH REELS
 
 
 
-<div class="div mt-2 allign-center" *ngIf="kint >= 1">
+<div class="mt-3" *ngIf="kint >= 1">
   <div *ngIf="loading else loaded">
-  <div class="container">
     <div class="row">
-      <div class="col-md-8">
-        <div class="loader">
-          <div class="loader-inner box1"></div>
-          <div class="loader-inner box2"></div>
-          <div class="loader-inner box3"></div>
-        </div>
-      </div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"><mat-spinner class="center"></mat-spinner></div>
+      <div class="col-sm-4"></div>
     </div>
-  </div>
+    
 </div>
 
 

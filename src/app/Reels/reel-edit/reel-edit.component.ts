@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Reels } from 'src/app/_models/Reels';
 import { ReelService } from 'src/app/_services/reel.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { NgForm } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-reel-edit',
@@ -20,7 +22,7 @@ export class ReelEditComponent implements OnInit {
     }
   }
 
-  constructor(private reelService: ReelService, private route: ActivatedRoute, private alertify: AlertifyService) { }
+  constructor(private router: Router, private reelService: ReelService, private route: ActivatedRoute, private alertify: AlertifyService) { }
 
   ngOnInit(){
     this.getReel();
@@ -33,11 +35,13 @@ export class ReelEditComponent implements OnInit {
       this.alertify.error(error);
     });
   }
+  
   deleteR(){
 
     this.alertify.confirm('Are you sure want to delete this reel?', ()=> {
       this.reelService.deleteReel(this.route.snapshot.params["id"]).subscribe(() => {
         this.alertify.success('Reel has been deleted');
+        this.router.navigate(['/reels']);
       }, error => {
         this.alertify.error('Failed to deltete');
       });

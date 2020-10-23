@@ -3,6 +3,7 @@ import { AuthService } from './_services/auth.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import { AlertifyService } from './_services/alertify.service';
 import { Router } from '@angular/router';
+import { User } from './_models/user';
 
 
 @Component({
@@ -14,8 +15,9 @@ export class AppComponent implements OnInit {
   jwtHelper = new JwtHelperService();
   events: string[] = [];
   opened: boolean;
+  user: User;
   
-  constructor(private authService: AuthService, private  alertify: AlertifyService, private router: Router){}
+  constructor(public authService: AuthService, private  alertify: AlertifyService, private router: Router){}
   
   ngOnInit(){
     const token = localStorage.getItem('token');
@@ -23,6 +25,12 @@ export class AppComponent implements OnInit {
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
     }
     
+    /* this.authService.getUser(this.authService.decodedToken).subscribe((user: User) => {
+      this.user = user;
+    }, error => {
+      this.alertify.error(error);
+    }); */
+
   }
   loggedIn(){
     return this.authService.loggedIn();

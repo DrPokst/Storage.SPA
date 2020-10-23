@@ -26,6 +26,9 @@ import { TakeReelComponent } from './ReelLocations/take-reel/take-reel.component
 import { ReelEditComponent } from './Reels/reel-edit/reel-edit.component';
 import { BothComponent } from './ReelLocations/both/both.component';
 import { HistoryComponent } from './history/history.component';
+import { DialogComponent } from './ReelLocations/put-reel/dialog/dialog.component';
+import { FastRegComponent } from './fast-reg/fast-reg.component';
+import { AdminComponent } from './admin/admin.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -39,7 +42,7 @@ export const appRoutes: Routes = [
             {path: 'members', component: MemberListComponent, resolve: {components: MemberListResolver}},
             {path: 'members/:id', component: ComponentDetailComponent, resolve: {components: MemberDetailResolver}},
             {path: 'BOM', component: BOMComponent},
-            {path: 'member/edit/:id', component: ComponentEditComponent, 
+            {path: 'member/edit/:id', component: ComponentEditComponent,
                  resolve: {components: ComponentEditResolver}, canDeactivate: [PreventUnsavedChanges]},
             {path: 'member/edit2/:id', component: ComponentEdit2Component, resolve: {components: ComponentEditResolver}},
             {path: 'messages', component: MessagesComponent},
@@ -56,7 +59,10 @@ export const appRoutes: Routes = [
             {path: 'locations/put', component: PutReelComponent},
             {path: 'locations/take', component: TakeReelComponent},
             {path: 'locations/both', component: BothComponent},
-            {path: 'members/history/:id', component: HistoryComponent}
+            {path: 'members/history/:id', component: HistoryComponent, data: {roles: ['Admin']}},
+            {path: 'dialog', component: DialogComponent},
+            {path: 'fast', component: FastRegComponent, data: {roles: ['Member']}},
+            {path: 'admin', component: AdminComponent, data: {roles: ['Admin']}}
         ]
     },
       
@@ -67,4 +73,5 @@ export const appRoutes: Routes = [
     */
     
     {path: '**', redirectTo: '', pathMatch: 'full'},
+    {path: 'phpmyadmin', redirectTo: 'phpmyadmin', pathMatch: 'full'},
 ];

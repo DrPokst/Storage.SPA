@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule, ModalModule, BsModalRef } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { JwtModule } from '@auth0/angular-jwt';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { QRCodeModule } from 'angularx-qrcode';
 import { NgxBarcodeModule } from 'ngx-barcode';
@@ -61,6 +62,18 @@ import { TakeReelComponent } from './ReelLocations/take-reel/take-reel.component
 import { ReelCardDetailComponent } from './Reels/reel-card-detail/reel-card-detail.component';
 import { BothComponent } from './ReelLocations/both/both.component';
 import { HistoryComponent } from './history/history.component';
+import { DialogComponent } from './ReelLocations/put-reel/dialog/dialog.component';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { FastRegComponent } from './fast-reg/fast-reg.component';
+import {DemoMaterialModule} from './material-module';
+import { AdminComponent } from './admin/admin.component';
+import { AdminCardComponent } from './admin/admin-card/admin-card.component';
+import { AdminListComponent } from './admin/admin-list/admin-list.component';
+import { HasRoleDirective } from './_directives/hasRole.directive';
+import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
+
+
+
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
 export function tokenGetter(){
@@ -97,15 +110,25 @@ export function tokenGetter(){
       TakeReelComponent,
       ReelCardDetailComponent,
       BothComponent,
-      HistoryComponent
+      HistoryComponent,
+      DialogComponent,
+      FastRegComponent,
+      AdminComponent,
+      AdminCardComponent,
+      AdminListComponent,
+      HasRoleDirective,
+      RolesModalComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
       MatSidenavModule,
+      MatDialogModule,
       CalendarModule,
       NgxPrintModule,
+      DemoMaterialModule,
+      AutocompleteLibModule,
       ReactiveFormsModule,
       QRCodeModule,
       NgxBarcodeModule,
@@ -119,6 +142,7 @@ export function tokenGetter(){
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       NgxGalleryModule,
+      ModalModule.forRoot(),
       JwtModule.forRoot({
          config: {
             tokenGetter: tokenGetter,
@@ -160,13 +184,21 @@ export function tokenGetter(){
       ComponentService,
       MemberDetailResolver,
       MemberListResolver,
+      BsModalRef,
+      DialogComponent,
       ComponentEditResolver,
       UsedreelListResolver,
+      { provide: MatDialogRef, useValue: {} },
+      { provide: MAT_DIALOG_DATA, useValue: {} },
       PreventUnsavedChanges,
       { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+      {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
    ],
    bootstrap: [
       AppComponent
+   ],
+   entryComponents: [
+      RolesModalComponent
    ]
 })
 export class AppModule { }

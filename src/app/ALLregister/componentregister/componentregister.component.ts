@@ -4,6 +4,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ReelService } from 'src/app/_services/reel.service';
 import { ComponentService } from 'src/app/_services/component.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-componentregister',
@@ -18,7 +19,7 @@ export class ComponentregisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   registerForm: FormGroup;
   
-  constructor(private reelService: ReelService, private  alertify: AlertifyService, private componentService: ComponentService) { }
+  constructor(private reelService: ReelService, private  alertify: AlertifyService, private componentService: ComponentService, private router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup(
@@ -91,17 +92,17 @@ export class ComponentregisterComponent implements OnInit {
 
     this.componentService.registerComponent(formData). subscribe(()=>{
       this.alertify.success('sekmingai uzregistruota');
+      this.router.navigate(['/members']);
     }, error => {
       this.alertify.error(error);
     });
     
     console.log(formData);
-    this.registerForm.reset();
-    this.imageURL = null;
+
+    
   }
 
-  clear(){
-  }
+  
 
   cancel(){
     this.cancelRegister.emit(false);

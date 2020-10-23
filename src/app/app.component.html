@@ -31,12 +31,13 @@
                         <div class="sidebar-header">
                             <div class="user-pic">
                                 <img class="img-responsive img-rounded"
-                                    src="https://cdn4.vectorstock.com/i/1000x1000/35/68/person-icon-male-user-profile-avatar-vector-18833568.jpg"
+                                    
                                     alt="User picture">
                             </div>
                             <div class="user-info">
-                                <span class="user-role">Domantas</span><br>
-                                <span class="user-role">Administrator</span>
+                                <span class="user-role">Sveiki,</span><br>
+                                <span class="user-role">{{authService.decodedToken?.unique_name  | titlecase}}</span>
+                                
                                 <span class="user-status"></span>
                             </div>
                         </div><br>
@@ -89,6 +90,12 @@
                                     Reel
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" [routerLink]="['/fast']">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg> 
+                                    Greita registracija
+                                </a>
+                            </li>
                             
     
                         </ul>
@@ -103,9 +110,32 @@
                                     Storage
                                 </a>
                             </li>
-                            
-    
                         </ul>
+                        <h6 
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Other</span>
+                        </h6>
+                        <ul class="nav flex-column mb-2">
+                            <li  class="nav-item">
+                                <a class="nav-link" [routerLink]="['/calendar']">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="#626262" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></g></svg>
+                                    Calendar
+                                </a>
+                            </li>
+                        </ul>
+                        <h6 *appHasRole="['Admin']"
+                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Admin Panel</span>
+                        </h6>
+                        <ul *appHasRole="['Admin']" class="nav flex-column mb-2">
+                            <li  class="nav-item">
+                                <a class="nav-link" [routerLink]="['/admin']">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-database"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                                    ADMIN
+                                </a>
+                            </li>
+                        </ul>
+                        
                 </div>
             </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
