@@ -5,6 +5,7 @@ import { CompareService } from 'src/app/_services/compare.service';
 import { Reels } from 'src/app/_models/Reels';
 import { IsLoadingService } from '@service-work/is-loading';
 import { Observable } from 'rxjs';
+import { ReelService } from 'src/app/_services/reel.service';
 
 @Component({
   selector: 'app-usedreel-list',
@@ -19,7 +20,11 @@ export class UsedreelListComponent implements OnInit {
   loading = true;
   kint = 0;
 
-  constructor(private alertify: AlertifyService, private route: ActivatedRoute, private compareService: CompareService, private isLoadingService: IsLoadingService) { }
+  constructor(private reelService: ReelService,
+              private alertify: AlertifyService,
+              private route: ActivatedRoute,
+              private compareService: CompareService,
+              private isLoadingService: IsLoadingService) { }
   
 
   ngOnInit() {
@@ -41,5 +46,15 @@ export class UsedreelListComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
+  }
+
+  TurnOnLed(id: number){
+    this.reelService.TurnOnLed(id).subscribe(()=>{
+      this.alertify.success('sekmingai uzdegta');
+    }, error => {
+      this.alertify.error(error);
+    });
+    console.log(id);
+    
   }
 }

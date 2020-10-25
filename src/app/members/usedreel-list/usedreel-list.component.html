@@ -36,14 +36,7 @@ SEARCH REELS
           <td>{{reels.qty}}</td>
           <td>{{reels.cMnf}}</td>
           <td>
-            <div class="row">
-              <div class="col-sm-6">
-                <qrcode qrdata="{{reels.location}}" [width]="50" [errorCorrectionLevel]="'M'"></qrcode>
-              </div>
-              <div class="col-sm-4">
-                {{reels.location}}
-              </div>
-            </div>
+           <button class="myButton" (click)="TurnOnLed(reels.id)"><i class="fas fa-lightbulb" aria-hidden="true"></i> Turn on LED and take reel</button>
           </td>
         </tr>
 
