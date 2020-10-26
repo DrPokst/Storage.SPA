@@ -55,7 +55,7 @@ export const appRoutes: Routes = [
             {path: 'cardreels', component: ReelCardComponent},
             {path: 'comp/:id', component: UsedreelListComponent},
             {path: 'reels/:id', component: ReelDetailComponent},
-            {path: 'reels/edit/:id', component: ReelEditComponent},
+            {path: 'reels/edit/:id', component: ReelEditComponent, data: {roles: ['Moderator', 'Admin']}},
             {path: 'locations/put', component: PutReelComponent},
             {path: 'locations/take', component: TakeReelComponent},
             {path: 'locations/both', component: BothComponent},

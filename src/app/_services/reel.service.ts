@@ -97,7 +97,16 @@ ResetLocation(model: any){
   return this.http.post(this.baseUrl + 'location/take', model);
 }
 TurnOnLed(id){
-  return this.http.get(this.baseUrl + 'led/' + id);
+  return this.http.put(this.baseUrl + 'led/on/' + id, id);
+}
+TurnOffLed(id){
+  return this.http.put(this.baseUrl + 'led/off/' + id, id);
+}
+TurnOnAll(){
+  return this.http.put(this.baseUrl + 'led/off/', true);
+}
+TurnOffAll(){
+  return this.http.put(this.baseUrl + 'led/off/', true);
 }
 deleteReel(reelId: NumberConstructor){
   return this.http.delete(this.baseUrl + 'reel/' + reelId);

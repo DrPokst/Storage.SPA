@@ -1,5 +1,6 @@
 import { Photo } from './photo';
 import { history } from './history';
+import { Reels } from './Reels';
 
 export interface Components {
     id: number;
@@ -17,4 +18,5 @@ export interface Components {
     created: Date;
     photos?: Photo[];
     history?: history[];
+    reels?: Reels[];
 }

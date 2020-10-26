@@ -1,25 +1,27 @@
 <main role="main" class="">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Dashboard</h1>
-  
-  <div class="btn-toolbar mb-2 mb-md-0">
-    
-      <form class="form-inline d-flex justify-content-center text-light" #form="ngForm" (ngSubmit)="loadReels()" novalidate>
-        <div  class="px-1">
-          <input type="text" required name="CMnf" placeholder="Enter Manufacturer Number.." class="form-control form-control-sm" required [(ngModel)]="componentParams.CMnf">
+
+    <div class="btn-toolbar mb-2 mb-md-0">
+
+      <form class="form-inline d-flex justify-content-center text-light" #form="ngForm" (ngSubmit)="loadReels()"
+        novalidate>
+        <div class="px-1">
+          <input type="text" required name="CMnf" placeholder="Enter Manufacturer Number.."
+            class="form-control form-control-sm" required [(ngModel)]="componentParams.CMnf">
         </div>
 
         <div class="btn-group mr-2">
           <button type="submit" class="btn btn-sm btn-outline-secondary">Apply filters</button>
-          <button type="button" class="btn btn-sm btn-secondary" >Clear Filters</button>
+          <button type="button" class="btn btn-sm btn-secondary">Clear Filters</button>
         </div>
-        
+
       </form>
-    
+
+    </div>
+
+
   </div>
-
-
-</div>
 
 
   <div class="row">
@@ -32,119 +34,117 @@
             <th [(ngModel)]="componentParams.OrderBy" (click)="loadReels()" btnRadio="ID">ID</th>
             <th [(ngModel)]="componentParams.OrderBy" (click)="loadReels()" btnRadio="CMnf">Manufacturer Number</th>
             <th [(ngModel)]="componentParams.OrderBy" (click)="loadReels()" btnRadio="qty">QTY</th>
-            <th class="rigt">Edit</th>
-            <th class="left">LED</th>
+            <th *appHasRole="['Moderator', 'Admin']" class="rigt">Edit</th>
+            <th *appHasRole="['Moderator', 'Admin']" class="left">LED</th>
           </tr>
 
 
         </thead>
         <tbody>
-          <tr *ngFor="let reel of reels" [class.selected]="reel === selectedreel" (click)="onSelect(reel)" >
+          <tr *ngFor="let reel of reels" [class.selected]="reel === selectedreel" (click)="onSelect(reel)">
             <td><input type="checkbox" class="checkthis" /></td>
             <th scope="row">{{reel.id}}</th>
-            <td >{{reel.cMnf}}</td>
-            <td >{{reel.qty}}</td>
-            <td class="rigt"><button class="myButton" [routerLink]="['/reels/edit/', reel.id]"><i class="far fa-edit"></i></button></td>
-            <td class="left"><button class="myButton" (click)="TurnOnLed(reel.id)"><i class="fas fa-lightbulb" aria-hidden="true"></i></button></td>
-            
+            <td>{{reel.cMnf}}</td>
+            <td>{{reel.qty}}</td>
+            <td *appHasRole="['Moderator', 'Admin']" class="rigt"><button  class="myButton" [routerLink]="['/reels/edit/', reel.id]"><i
+                  class="far fa-edit"></i></button></td>
+            <td *appHasRole="['Moderator', 'Admin']" class="left"><button  class="myButton" (click)="TurnOnLed(reel.id)"><i
+                  class="fas fa-lightbulb" aria-hidden="true"></i></button>
+              <button  class="myButton2" (click)="TurnOnLed(reel.id)"><i
+                  class="fas fa-lightbulb" aria-hidden="true"></i></button>
+            </td>
+
           </tr>
         </tbody>
       </table>
-      
+
 
       <div class="d-flex justify-content-center mt-2">
-        <pagination *ngIf="pagination"
-                    [boundaryLinks]="true" 
-                    [totalItems]="pagination.totalItems" 
-                    [itemsPerPage]="pagination.itempsPerPage"
-                    [(ngModel)]="pagination.currentPage"
-                    (pageChanged)="pageChanged($event)"
-                    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
-      
-       </pagination>
-       
+        <pagination *ngIf="pagination" [boundaryLinks]="true" [totalItems]="pagination.totalItems"
+          [itemsPerPage]="pagination.itempsPerPage" [(ngModel)]="pagination.currentPage"
+          (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+          lastText="&raquo;">
+
+        </pagination>
+
       </div>
 
     </div>
     <div class="col-md-5 pt-3 pb-2 mb-3 border-left">
-      
+
       <div class="pb-2 mb-3 border-bottom">
-          <h3 class="text-center">Detail</h3>
+        <h3 class="text-center">Detail</h3>
       </div>
 
 
-      
+
       <div *ngIf="selectedreel" class="emp-profile">
-        <app-reel-card-detail [reel]="selectedreel" ></app-reel-card-detail>
+        <app-reel-card-detail [reel]="selectedreel"></app-reel-card-detail>
       </div>
 
       <div *ngIf="!selectedreel" class="emp-profile">
         <div class="profile-img">
-    
+
           <div class="pb-2 mb-3 border-bottom">
-              <img src="" alt="" />
+            <img src="" alt="" />
           </div>
-          
+
           <div class="pb-2 mb-3 border-bottom">
             <div class="row">
               <div class="col-sm-5 border-right">
-                  Reel ID:
+                Reel ID:
               </div>
               <div class="col-sm-7">
-                  
+
               </div>
+            </div>
           </div>
-          </div>
-          
+
           <div class="pb-2 mb-3 border-bottom">
-          <div class="row">
+            <div class="row">
               <div class="col-sm-5 border-right">
-                  Mnf:
+                Mnf:
               </div>
               <div class="col-sm-7">
-                  
+
               </div>
-          </div>
+            </div>
           </div>
           <div class="pb-2 mb-3 border-bottom">
-          <div class="row">
+            <div class="row">
               <div class="col-sm-5 border-right">
-                  QTY:
+                QTY:
               </div>
               <div class="col-sm-7">
-                 
+
               </div>
-          </div>
+            </div>
           </div>
           <div class="pb-2 mb-3 border-bottom">
-          <div class="row">
+            <div class="row">
               <div class="col-sm-5 border-right">
-                  Location:
+                Location:
               </div>
               <div class="col-sm-7 qr">
-                 
+
               </div>
-          </div>
+            </div>
           </div>
           <div class="pb-2 mb-3 border-bottom">
             <div class="row">
-                <div class="col-sm-5 border-right">
-                    Lipdukas:
-                </div>
-                <div class="col-sm-7 qr">
-                   
-                </div>
+              <div class="col-sm-5 border-right">
+                Lipdukas:
+              </div>
+              <div class="col-sm-7 qr">
+
+              </div>
             </div>
-            </div>
-         
-      </div>
+          </div>
+
+        </div>
       </div>
 
     </div>
   </div>
 
-  </main>
-
-  
-
-
+</main>
