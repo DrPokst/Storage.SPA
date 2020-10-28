@@ -8,7 +8,7 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-<div class="main" *ngIf="loggedIn()">
+<div class="main" *ngIf="loggedIn()"> 
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Storage APP</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
@@ -30,13 +30,13 @@
                     <li class="nav-item">
                         <div class="sidebar-header">
                             <div class="user-pic">
-                                <img class="img-responsive img-rounded"
-                                    
+                                <img *ngIf="user" class="img-responsive img-rounded"
+                                    src="{{user.photoUrl}}"
                                     alt="User picture">
                             </div>
                             <div class="user-info">
                                 <span class="user-role">Sveiki,</span><br>
-                                <span class="user-role">{{authService.decodedToken?.unique_name  | titlecase}}</span>
+                                <span class="user-role" [routerLink]="['/userinfo']">{{authService.decodedToken?.unique_name  | titlecase}}</span>
                                 
                                 <span class="user-status"></span>
                             </div>

@@ -1,0 +1,71 @@
+
+tr:hover{
+    background: rgb(32, 211, 202, 0.1) ;
+}
+th:hover{
+    cursor: pointer;
+    color: rgb(146, 146, 146);
+}
+table.table {
+    font-family: "Segoe UI";
+    text-align: left;
+    border-collapse: collapse;
+  }
+
+td.rigt, th.rigt{
+    text-align: right;
+}
+td.left, th.lefr{
+    text-align: left;
+}
+
+.myButton {
+	background-color:#ffffff;
+	border-radius:10px;
+	border:1px solid #858585;
+	display:inline-block;
+	cursor:pointer;
+	color:#575757;
+	font-family:Courier New;
+	font-size:10px;
+    font-weight:bold;
+	text-decoration:none;
+}
+.myButton:hover {
+    color: rgb(0, 0, 0);
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.myButton2 {
+	background-color:#575757;
+	border-radius:10px;
+	border:1px solid #858585;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family:Courier New;
+	font-size:10px;
+    font-weight:bold;
+	text-decoration:none;
+}
+.myButton2:hover {
+    color: #000000;
+}
+.myButton2:active {
+	position:relative;
+	top:1px;
+}
+
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: inherit;
+    height: 300px;
+}
+.qr{
+    height: 120px;
+}
+     

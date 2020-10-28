@@ -13,102 +13,101 @@ import { history } from '../_models/history';
 export class ReelService {
   baseUrl = environment.apiUrl;
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-getReels(page?, itempsPerPage?, componentParams?): Observable<PaginatedResult<Reels[]>>{
-  const paginatedResult: PaginatedResult<Reels[]> = new PaginatedResult<Reels[]>();
-  let params = new HttpParams();
+  getReels(page?, itempsPerPage?, componentParams?): Observable<PaginatedResult<Reels[]>> {
+    const paginatedResult: PaginatedResult<Reels[]> = new PaginatedResult<Reels[]>();
+    let params = new HttpParams();
 
-  if (page != null && itempsPerPage != null)
-  {
-    params = params.append('pageNumber', page);
-    params = params.append('pageSize', itempsPerPage);
+    if (page != null && itempsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itempsPerPage);
+    }
+
+    if (componentParams != null) {
+      if (componentParams.CMnf != null) {
+        params = params.append('CMnf', componentParams.CMnf);
+      }
+      if (componentParams.OrderBy != null) {
+        params = params.append('orderBy', componentParams.OrderBy);
+      }
+    }
+
+    return this.http.get<Reels[]>(this.baseUrl + 'reel', { observe: 'response', params })
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') != null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'))
+          }
+          return paginatedResult;
+        })
+      );
   }
 
-  if (componentParams != null)
-  {
-    if (componentParams.CMnf != null) {
-      params = params.append('CMnf', componentParams.CMnf);
+  getHistory(page?, itempsPerPage?, componentParams?): Observable<PaginatedResult<history[]>> {
+    const paginatedResult: PaginatedResult<history[]> = new PaginatedResult<history[]>();
+    let params = new HttpParams();
+
+    if (page != null && itempsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itempsPerPage);
     }
-    if (componentParams.OrderBy != null) {
-      params = params.append('orderBy', componentParams.OrderBy);
+
+    if (componentParams != null) {
+      if (componentParams.CMnf != null) {
+        params = params.append('CMnf', componentParams.CMnf);
+      }
+      if (componentParams.OrderBy != null) {
+        params = params.append('orderBy', componentParams.OrderBy);
+      }
     }
+
+    return this.http.get<history[]>(this.baseUrl + 'location/history', { observe: 'response', params })
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') != null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'))
+          }
+          return paginatedResult;
+        })
+      );
   }
-
-  return this.http.get<Reels[]>(this.baseUrl + 'reel', {observe: 'response', params})
-    .pipe(
-      map(response => {
-        paginatedResult.result = response.body;
-        if (response.headers.get('Pagination') != null) {
-          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'))
-        }
-        return paginatedResult;
-      })
-    );
-}
-
-getHistory(page?, itempsPerPage?, componentParams?): Observable<PaginatedResult<history[]>>{
-  const paginatedResult: PaginatedResult<history[]> = new PaginatedResult<history[]>();
-  let params = new HttpParams();
-
-  if (page != null && itempsPerPage != null)
-  {
-    params = params.append('pageNumber', page);
-    params = params.append('pageSize', itempsPerPage);
+  getReel(id): Observable<Reels> {
+    return this.http.get<Reels>(this.baseUrl + 'reel/' + id);
   }
-
-  if (componentParams != null)
-  {
-    if (componentParams.CMnf != null) {
-      params = params.append('CMnf', componentParams.CMnf);
-    }
-    if (componentParams.OrderBy != null) {
-      params = params.append('orderBy', componentParams.OrderBy);
-    }
+  getReelMnf(mnf): Observable<Reels> {
+    return this.http.get<Reels>(this.baseUrl + 'reel/PagalMnf/' + mnf);
   }
-
-  return this.http.get<history[]>(this.baseUrl + 'location/history', {observe: 'response', params})
-    .pipe(
-      map(response => {
-        paginatedResult.result = response.body;
-        if (response.headers.get('Pagination') != null) {
-          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'))
-        }
-        return paginatedResult;
-      })
-    );
-}
-getReel(id): Observable<Reels>{
-  return this.http.get<Reels>(this.baseUrl + 'reel/' + id);
-}
-getReelMnf(mnf): Observable<Reels>{
-  return this.http.get<Reels>(this.baseUrl + 'reel/PagalMnf/' + mnf);
-}
-updateReel(id: number, reel: Reels){
-  return this.http.put(this.baseUrl + 'reel/' + id, reel);
-}
-registerReel(model: any){
-  return this.http.post(this.baseUrl + 'reel/registerreel', model);
-}
-SetLocation(model: any){
-  return this.http.post(this.baseUrl + 'location/put', model);
-}
-ResetLocation(model: any){
-  return this.http.post(this.baseUrl + 'location/take', model);
-}
-TurnOnLed(id){
-  return this.http.put(this.baseUrl + 'led/on/' + id, id);
-}
-TurnOffLed(id){
-  return this.http.put(this.baseUrl + 'led/off/' + id, id);
-}
-TurnOnAll(){
-  return this.http.put(this.baseUrl + 'led/off/', true);
-}
-TurnOffAll(){
-  return this.http.put(this.baseUrl + 'led/off/', true);
-}
-deleteReel(reelId: NumberConstructor){
-  return this.http.delete(this.baseUrl + 'reel/' + reelId);
-}
+  updateReel(id: number, reel: Reels) {
+    return this.http.put(this.baseUrl + 'reel/' + id, reel);
+  }
+  registerReel(model: any) {
+    return this.http.post(this.baseUrl + 'reel/registerreel', model);
+  }
+  TakeOut(model: any) {
+    return this.http.post(this.baseUrl + 'location', model);
+  }
+  SetLocation(model: any) {
+    return this.http.post(this.baseUrl + 'location/put', model);
+  }
+  ResetLocation(model: any) {
+    return this.http.post(this.baseUrl + 'location/take', model);
+  }
+  TurnOnLed(id) {
+    return this.http.put(this.baseUrl + 'led/on/' + id, id);
+  }
+  TurnOffLed(id) {
+    return this.http.put(this.baseUrl + 'led/off/' + id, id);
+  }
+  TurnOnAll() {
+    return this.http.put(this.baseUrl + 'led/on/all', true);
+  }
+  TurnOffAll() {
+    return this.http.put(this.baseUrl + 'led/off/all', true);
+  }
+  deleteReel(reelId: NumberConstructor) {
+    return this.http.delete(this.baseUrl + 'reel/' + reelId);
+  }
 }

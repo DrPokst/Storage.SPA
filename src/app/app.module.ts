@@ -71,6 +71,7 @@ import { AdminCardComponent } from './admin/admin-card/admin-card.component';
 import { AdminListComponent } from './admin/admin-list/admin-list.component';
 import { HasRoleDirective } from './_directives/hasRole.directive';
 import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
+import { UserComponent } from './user/user.component';
 
 
 
@@ -117,7 +118,8 @@ export function tokenGetter(){
       AdminCardComponent,
       AdminListComponent,
       HasRoleDirective,
-      RolesModalComponent
+      RolesModalComponent,
+      UserComponent
    ],
    imports: [
       BrowserModule,

@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <table id="mytable" class="table table-sm emp-profile">
+
+        <thead class="thead-dark">
+          <tr>
+            <th btnRadio="ID">ID</th>
+            <th btnRadio="CMnf">Manufacturer Number</th>
+            <th btnRadio="qty">QTY</th>
+          </tr>
+    
+    
+        </thead>
+        <tbody>
+          <tr *ngFor="let reel of reels">
+            <th scope="row">{{reel.id}}</th>
+            <td>{{reel.cMnf}}</td>
+            <td>{{reel.qty}}</td>
+    
+          </tr>
+        </tbody>
+      </table>
+</div>

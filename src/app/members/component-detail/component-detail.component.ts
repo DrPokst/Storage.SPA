@@ -81,7 +81,6 @@ export class ComponentDetailComponent implements OnInit {
         (components: Components) => {
           this.components = components;
           this.history = this.components.history;
-          
         },
         (error) => {
           this.alertify.error(error);

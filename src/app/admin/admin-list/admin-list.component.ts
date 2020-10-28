@@ -3,6 +3,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { User } from 'src/app/_models/user';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthService } from 'src/app/_services/auth.service';
+import { ReelService } from 'src/app/_services/reel.service';
 import { RolesModalComponent } from '../roles-modal/roles-modal.component';
 
 @Component({
@@ -16,12 +17,30 @@ export class AdminListComponent implements OnInit {
   bsModalRef: BsModalRef;
   isrinkta: any[];
 
-  constructor(private authService: AuthService, private alertify: AlertifyService, private modalService: BsModalService) { }
+  constructor(private reelService: ReelService,
+              private authService: AuthService,
+              private alertify: AlertifyService,
+              private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.loadUsers();
   }
-
+  turnOnAll()
+  {
+    this.reelService.TurnOnAll().subscribe(() => {
+      this.alertify.success('sekmingai ijungti visi');
+    }, error => {
+      this.alertify.error(error);
+    });
+  }
+  turnOffAll()
+  {
+    this.reelService.TurnOffAll().subscribe(() => {
+      this.alertify.success('sekmingai isungti visi');
+    }, error => {
+      this.alertify.error(error);
+    });
+  }
   loadUsers()
   {
     this.authService.getUsers().subscribe((users: User[]) => {

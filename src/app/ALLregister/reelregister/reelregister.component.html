@@ -44,26 +44,18 @@
                                 </div>
                                 <img *ngIf="imageURL" [src]="imageURL" height="file" width="100%"/>
                             </div>
-                            
                         </div>
-
                     </div>
                     <div class="col-sm-6">
                         <div class="mt-5">
                             <button [disabled]="!registerForm.valid" class="btn btn-sm btn-outline-secondary btn-block"
                                 type="submit" [routerLink]="['/register/reel']"><i
                                     class="fa fa-check mr-2"></i>Register</button>
-
                             <button type="button" class="btn btn-sm btn-outline-secondary btn-block"><i
                                     class="fas fa-print mr-2"></i>Print</button>
                         </div>
-
                     </div>
-                    
-
                 </div>
-
-
             </div>
         </div>
     </form>

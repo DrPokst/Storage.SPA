@@ -53,14 +53,16 @@ export class AuthService {
     return isMatch;
   }
 
-  getUsers(): Observable<User[]>{
+  getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl + 'admin/usersWithRoles');
   }
-  changeRole(name: string, user: any){
+  changeRole(name: string, user: any) {
     return this.http.post(this.baseUrl + 'editRoles/' + name, user);
   }
-
-  updateUserRoles(user: User, roles: {}){
+  getUserInfo(name: string): Observable<User> {
+    return this.http.get<User>(this.baseUrl + 'user/info/' + name);
+  }
+  updateUserRoles(user: User, roles: {}) {
     return this.http.post(this.baseUrl + 'admin/editRoles/' + user.userName, roles);
   }
 }

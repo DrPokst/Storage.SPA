@@ -54,7 +54,14 @@ export class ReelsListComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
-    console.log(id);
+    
+  }
+  TurnOffLed(id: number){
+    this.reelService.TurnOffLed(id).subscribe(()=>{
+      this.alertify.success('sekmingai išjungta');
+    }, error => {
+      this.alertify.error(error);
+    });
     
   }
 }

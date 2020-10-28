@@ -6,6 +6,9 @@ import { Reels } from 'src/app/_models/Reels';
 import { IsLoadingService } from '@service-work/is-loading';
 import { Observable } from 'rxjs';
 import { ReelService } from 'src/app/_services/reel.service';
+import { AuthService } from 'src/app/_services/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-usedreel-list',
@@ -15,20 +18,29 @@ import { ReelService } from 'src/app/_services/reel.service';
 export class UsedreelListComponent implements OnInit {
   reels: Reels[];
   reels2: Observable<Reels[]>;
+  jwtHelper = new JwtHelperService();
   suma = 0;
   ilgis = 0;
   loading = true;
   kint = 0;
+  registerForm: FormGroup;
 
   constructor(private reelService: ReelService,
               private alertify: AlertifyService,
               private route: ActivatedRoute,
               private compareService: CompareService,
-              private isLoadingService: IsLoadingService) { }
+              private isLoadingService: IsLoadingService,
+              public authService: AuthService) { }
   
 
   ngOnInit() {
+    const token = localStorage.getItem('token');
+    if (token){
+      this.authService.decodedToken = this.jwtHelper.decodeToken(token);
+    }
   }
+
+
 
   loadComparedReels(){
     this.kint++;
@@ -48,8 +60,21 @@ export class UsedreelListComponent implements OnInit {
     });
   }
 
-  TurnOnLed(id: number){
-    this.reelService.TurnOnLed(id).subscribe(()=>{
+  TakeOut(id: any){
+
+    this.registerForm = new FormGroup(
+      {
+        ReelId: new FormControl(),
+        Username: new FormControl()
+      }
+    );
+
+    this.registerForm.setValue({ReelId: id,
+                                Username: this.authService.decodedToken.unique_name
+                                });
+
+    console.log(this.registerForm.value);
+    this.reelService.TakeOut(this.registerForm.value).subscribe(() => {
       this.alertify.success('sekmingai uzdegta');
     }, error => {
       this.alertify.error(error);
