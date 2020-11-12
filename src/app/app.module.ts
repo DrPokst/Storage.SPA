@@ -72,6 +72,8 @@ import { AdminListComponent } from './admin/admin-list/admin-list.component';
 import { HasRoleDirective } from './_directives/hasRole.directive';
 import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
 import { UserComponent } from './user/user.component';
+import { UploadComponent } from './BOM/upload/upload.component';
+import { CreateComponent } from './BOM/create/create.component';
 
 
 
@@ -119,7 +121,9 @@ export function tokenGetter(){
       AdminListComponent,
       HasRoleDirective,
       RolesModalComponent,
-      UserComponent
+      UserComponent,
+      UploadComponent,
+      CreateComponent
    ],
    imports: [
       BrowserModule,

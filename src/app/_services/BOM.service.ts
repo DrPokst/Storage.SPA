@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import * as XLSX from 'xlsx';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BOMService {
-
-constructor() { }
+  baseUrl = environment.apiUrl;
+  
+constructor(private http: HttpClient) { }
 
 public importFromFile(bstr: string): XLSX.AOA2SheetOpts {
   /* read workbook */
@@ -21,5 +24,10 @@ public importFromFile(bstr: string): XLSX.AOA2SheetOpts {
 
   return data;
 }
+
+registerReel(model: any) {
+  return this.http.post(this.baseUrl + 'bom', model);
+}
+
 
 }

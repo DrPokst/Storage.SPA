@@ -30,6 +30,8 @@ import { DialogComponent } from './ReelLocations/put-reel/dialog/dialog.componen
 import { FastRegComponent } from './fast-reg/fast-reg.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
+import { UploadComponent } from './BOM/upload/upload.component';
+import { CreateComponent } from './BOM/create/create.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -42,7 +44,9 @@ export const appRoutes: Routes = [
         children: [
             {path: 'members', component: MemberListComponent, resolve: {components: MemberListResolver}},
             {path: 'members/:id', component: ComponentDetailComponent, resolve: {components: MemberDetailResolver}},
-            {path: 'BOM', component: BOMComponent},
+            {path: 'bom', component: BOMComponent},
+            {path: 'bom/upload', component: UploadComponent},
+            {path: 'bom/create', component: CreateComponent},
             {path: 'member/edit/:id', component: ComponentEditComponent,
                  resolve: {components: ComponentEditResolver}, canDeactivate: [PreventUnsavedChanges]},
             {path: 'member/edit2/:id', component: ComponentEdit2Component, resolve: {components: ComponentEditResolver}},
