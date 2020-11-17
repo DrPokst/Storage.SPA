@@ -1,7 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import * as XLSX from 'xlsx';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { BomName } from '../_models/BomName';
+import { BomList } from '../_models/BomList';
+import { xBomList } from '../_models/xBomList';
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +29,21 @@ public importFromFile(bstr: string): XLSX.AOA2SheetOpts {
   return data;
 }
 
-registerReel(model: any) {
+UploadBom(model: any) {
   return this.http.post(this.baseUrl + 'bom', model);
 }
 
+GetBomNames(): Observable<BomName[]>{
+  return this.http.get<BomName[]>(this.baseUrl + 'bom');
+}
 
+deleteBom(bomName: string) {
+  return this.http.delete(this.baseUrl + 'bom/' + bomName);
+}
+GetBomList(name: string): Observable<BomList[]>{
+  return this.http.get<BomList[]>(this.baseUrl + 'bom/' + name);
+}
+GetxBomList(name: string, xQty: number): Observable<xBomList[]>{
+  return this.http.get<xBomList[]>(this.baseUrl + 'bom/' + name + '/check/' + xQty);
+}
 }

@@ -7,6 +7,7 @@ export interface Reels {
     cMnf: string;
     qty: number;
     photoUrl2: string;
+    componentasId?: number;
     location?: string;
     photos?: Photo[];
     history?: history[];

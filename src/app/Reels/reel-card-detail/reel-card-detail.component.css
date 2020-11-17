@@ -8,9 +8,13 @@
 .qr{
     height: 100px;
 }
+b:hover{
+    text-decoration: underline;
+}
 
 @media print {
 	div {
 		font-size: 5 pt;
 	}
 }
+

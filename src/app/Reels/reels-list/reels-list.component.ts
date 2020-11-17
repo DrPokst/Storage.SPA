@@ -13,6 +13,7 @@ import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
 })
 export class ReelsListComponent implements OnInit {
   reels: Reels[];
+  component: Component;
   selectedreel: Reels;
   componentParams: any = {};
   pagination: Pagination;
@@ -39,6 +40,8 @@ export class ReelsListComponent implements OnInit {
       (res: PaginatedResult<Reels[]>) => {
       this.reels = res.result;
       this.pagination = res.pagination;
+      console.log(this.reels);
+      
     }, error => {
       this.alertify.error(error);
     });

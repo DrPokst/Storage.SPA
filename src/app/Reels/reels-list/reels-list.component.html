@@ -44,14 +44,11 @@
           <tr *ngFor="let reel of reels" [class.selected]="reel === selectedreel" (click)="onSelect(reel)">
             <td><input type="checkbox" class="checkthis" /></td>
             <th scope="row">{{reel.id}}</th>
-            <td>{{reel.cMnf}}</td>
+            <td >{{reel.cMnf}}</td>
             <td>{{reel.qty}}</td>
-            <td *appHasRole="['Moderator', 'Admin']" class="rigt"><button  class="myButton" [routerLink]="['/reels/edit/', reel.id]"><i
-                  class="far fa-edit"></i></button></td>
-            <td *appHasRole="['Moderator', 'Admin']" class="left"><button  class="myButton" (click)="TurnOnLed(reel.id)"><i
-                  class="fas fa-lightbulb" aria-hidden="true"></i></button>
-              <button  class="myButton2" (click)="TurnOffLed(reel.id)"><i
-                  class="fas fa-lightbulb" aria-hidden="true"></i></button>
+            <td *appHasRole="['Moderator', 'Admin']" class="rigt" ><i [routerLink]="['/reels/edit/', reel.id]" class="far fa-edit"></i></td>
+            <td *appHasRole="['Moderator', 'Admin']" class="left"><i class="fas fa-lightbulb" aria-hidden="true" (click)="TurnOnLed(reel.id)"></i>
+               <i class="far fa-lightbulb" aria-hidden="true" (click)="TurnOffLed(reel.id)"></i>
             </td>
 
           </tr>

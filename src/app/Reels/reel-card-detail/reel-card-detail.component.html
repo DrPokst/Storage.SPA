@@ -22,8 +22,8 @@
                 <div class="col-sm-5 border-right">
                     Mnf:
                 </div>
-                <div class="col-sm-7">
-                    {{reel.cMnf}}
+                <div [routerLink]="['/members/', reel.componentasId]" class="col-sm-7 ">
+                    <b>{{reel.cMnf}}</b>
                 </div>
             </div>
         </div>

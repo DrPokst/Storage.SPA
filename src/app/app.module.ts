@@ -74,6 +74,7 @@ import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
 import { UserComponent } from './user/user.component';
 import { UploadComponent } from './BOM/upload/upload.component';
 import { CreateComponent } from './BOM/create/create.component';
+import { ComplistComponent } from './BOM/complist/complist.component';
 
 
 
@@ -123,7 +124,8 @@ export function tokenGetter(){
       RolesModalComponent,
       UserComponent,
       UploadComponent,
-      CreateComponent
+      CreateComponent,
+      ComplistComponent
    ],
    imports: [
       BrowserModule,

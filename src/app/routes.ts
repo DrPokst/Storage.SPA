@@ -32,6 +32,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { UploadComponent } from './BOM/upload/upload.component';
 import { CreateComponent } from './BOM/create/create.component';
+import { ComplistComponent } from './BOM/complist/complist.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -68,7 +69,8 @@ export const appRoutes: Routes = [
             {path: 'dialog', component: DialogComponent},
             {path: 'fast', component: FastRegComponent, data: {roles: ['Member']}},
             {path: 'admin', component: AdminComponent, data: {roles: ['Admin']}},
-            {path: 'userinfo', component: UserComponent}
+            {path: 'userinfo', component: UserComponent},
+            {path: 'bom/:name', component: ComplistComponent}
         ]
     },
       
