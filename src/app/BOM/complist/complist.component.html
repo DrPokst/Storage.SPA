@@ -37,7 +37,7 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="overflow-auto"> 
         <tr *ngFor="let bomList of bomList">
           <td *ngIf="bomList.componentasId > 0"></td>
           <td class="nerastas" *ngIf="bomList.componentasId === 0"></td>

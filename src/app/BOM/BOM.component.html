@@ -1,13 +1,88 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">BOM Manager</h1>
+  <h1 class="h2">BOM Manager</h1>
+
+  <div class="btn-toolbar mb-2 mb-md-0">
+
+    <form class="form-inline d-flex justify-content-center text-light" #form="ngForm" (ngSubmit)="GetBomNames()"
+      novalidate>
+      <div class="px-1">
+        <input type="text" required name="CMnf" placeholder="Enter Manufacturer Number.."
+          class="form-control form-control-sm">
+      </div>
+
+      <div class="btn-group mr-2">
+        <button type="submit" class="btn btn-sm btn-outline-secondary">Apply filters</button>
+        <button type="button" class="btn btn-sm btn-secondary">Clear Filters</button>
+      </div>
+
+    </form>
+
+  </div>
+
+
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <app-upload></app-upload>
+  </div>
+  <div class="col-sm-8">
+    <div class="containeris">
+
+      <table id="mytable" class="table table emp-profile">
+
+        <thead class="">
+          <tr>
+            <th></th>
+            <th>BOM name</th>
+            <th>Date Added</th>
+            <th>Last Modified</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+       
+      </table>
+      <div style="height: 225px !important; overflow-y: auto;">
+        <table id="mytable" class="table table emp-profile">
+
+          <thead class="">
+          </thead>
+          
+            <tbody>
+              
+              <tr *ngFor="let bomName of bomNames" [routerLink]="['/bom/', bomName.name]">
+                <td></td>
+                <td>{{bomName.name}}</td>
+                <td>{{bomName.dateAdded | date}} </td>
+                <td>{{bomName.lastModified | date}}</td>
+                <td><svg (click)="deleteBom(bomName.name)" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="feather feather-trash-2">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="antras">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">JOB List</h1>
 
     <div class="btn-toolbar mb-2 mb-md-0">
 
-      <form class="form-inline d-flex justify-content-center text-light" #form="ngForm" (ngSubmit)="GetBomNames()"
-        novalidate>
+      <form class="form-inline d-flex justify-content-center text-light" #form="ngForm" novalidate>
         <div class="px-1">
           <input type="text" required name="CMnf" placeholder="Enter Manufacturer Number.."
-            class="form-control form-control-sm" >
+            class="form-control form-control-sm">
         </div>
 
         <div class="btn-group mr-2">
@@ -21,37 +96,28 @@
 
 
   </div>
-
-<div class="row">
-    <div class="col-sm-8">
-        <div class="container">
-            <table id="mytable" class="table table emp-profile">
-
-                <thead class="center">
-                  <tr>
-                    <th></th>
-                    <th >BOM name</th>
-                    <th >Date Added</th>
-                    <th >Last Modified</th>
-                    <th></th>
-                </tr> 
-                </thead>
-                <tbody>
-                  <tr *ngFor="let bomName of bomNames"  [routerLink]="['/bom/', bomName.name]">
-                      <td></td>
-                    <td>{{bomName.name}}</td>
-                    <td>{{bomName.dateAdded | date}} </td>
-                    <td>{{bomName.lastModified | date}}</td>
-                    <td ><svg  (click)="deleteBom(bomName.name)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                    
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
-        
-    </div>
+  <div class="row">
     <div class="col-sm-4">
-        <app-upload></app-upload>
+      <app-create></app-create>
     </div>
+    <div class="col-sm-8">
+      <div class="container">
+        <table id="mytable" class="table table emp-profile">
+
+          <thead class="center">
+            <tr>
+              <th></th>
+              <th>Job name</th>
+              <th>Date Added</th>
+              <th>Last Modified</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
 </div>
