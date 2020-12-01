@@ -75,6 +75,7 @@ import { UserComponent } from './user/user.component';
 import { UploadComponent } from './BOM/upload/upload.component';
 import { CreateComponent } from './BOM/create/create.component';
 import { ComplistComponent } from './BOM/complist/complist.component';
+import { CreateModalComponent } from './BOM/create-modal/create-modal.component';
 
 
 
@@ -125,7 +126,8 @@ export function tokenGetter(){
       UserComponent,
       UploadComponent,
       CreateComponent,
-      ComplistComponent
+      ComplistComponent,
+      CreateModalComponent
    ],
    imports: [
       BrowserModule,
@@ -206,7 +208,8 @@ export function tokenGetter(){
       AppComponent
    ],
    entryComponents: [
-      RolesModalComponent
+      RolesModalComponent,
+      CreateModalComponent
    ]
 })
 export class AppModule { }
