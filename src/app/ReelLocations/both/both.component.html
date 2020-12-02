@@ -15,13 +15,13 @@
     <div class="pt-3 pb-2 mb-3 border-bottom text-center">
       STORE
     </div>
-    <app-put-reel></app-put-reel>
+    <app-put-reel (history)="ngOnInit()"></app-put-reel>
   </div>
   <div class="col-6 box">
     <div class="pt-3 pb-2 mb-3 border-bottom text-center">
       TAKE
     </div>
-    <app-take-reel></app-take-reel>
+    <app-take-reel (history)="ngOnInit()"></app-take-reel>
   </div>
 </div>
 

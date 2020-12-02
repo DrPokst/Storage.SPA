@@ -29,7 +29,6 @@ export class BOMComponent implements OnInit {
       console.log(error);
     });
   }
-
   deleteBom(name: string){
     this.alertify.confirm('Are you sure want to delete this reel?', ()=> {
       this.bomService.deleteBom(name).subscribe(() => {

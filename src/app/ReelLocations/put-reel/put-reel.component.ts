@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { ReelService } from 'src/app/_services/reel.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertifyService } from 'src/app/_services/alertify.service';
@@ -17,6 +17,7 @@ export class PutReelComponent implements OnInit {
   reels: Reels;
   editForm: NgForm;
   model: any = {};
+  @Output() history: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(public dialog: MatDialog,
               private reelService: ReelService,
@@ -30,7 +31,7 @@ export class PutReelComponent implements OnInit {
   SetLocation() {
     this.reelService.SetLocation(this.model).subscribe(() => {
       this.alertify.success('sekmingai uzregistruota');
-      this.ngOnInit();
+      this.history.emit(true);
     }, error => {
       this.alertify.error(error);
     });

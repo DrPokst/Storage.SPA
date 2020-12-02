@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Reels } from 'src/app/_models/Reels';
 import { ReelService } from 'src/app/_services/reel.service';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +11,8 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 })
 export class TakeReelComponent implements OnInit {
   model: any = {};
+  @Output() history: EventEmitter<boolean> = new EventEmitter<boolean>();
+  
   constructor(private reelService: ReelService, private route: ActivatedRoute, private alertify: AlertifyService) { }
 
   ngOnInit(): void {
@@ -19,6 +21,7 @@ export class TakeReelComponent implements OnInit {
   SetLocation() {
     this.reelService.SetLocation(this.model).subscribe(()=>{
       this.alertify.success('sekmingai uzregistruota');
+      this.history.emit(true);
     }, error => {
       this.alertify.error(error);
     });

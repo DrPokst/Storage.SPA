@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BOM } from 'src/app/_models/BOM';
 import { Components } from 'src/app/_models/components';
@@ -8,6 +8,7 @@ import { BOMService } from 'src/app/_services/BOM.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-upload',
@@ -19,7 +20,7 @@ export class UploadComponent implements OnInit {
   @ViewChild('UploadFileInput', { static: false }) uploadFileInput: ElementRef;
   fileUploadForm: FormGroup;
   fileInputLabel: string;
-  
+  @Output() bomuploaded: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private router: Router, public authService: AuthService, private bomService: BOMService,
               private  alertify: AlertifyService, private formBuilder: FormBuilder) { }
@@ -65,7 +66,13 @@ export class UploadComponent implements OnInit {
 
 
     this.bomService.UploadBom(formData). subscribe(()=>{
-      this.alertify.success('sekmingai uzregistruota');
+      Swal.fire({
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      this.bomuploaded.emit(true);
     }, error => {
       this.alertify.error(error);
     });

@@ -76,6 +76,7 @@ import { UploadComponent } from './BOM/upload/upload.component';
 import { CreateComponent } from './BOM/create/create.component';
 import { ComplistComponent } from './BOM/complist/complist.component';
 import { CreateModalComponent } from './BOM/create-modal/create-modal.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 
@@ -145,6 +146,7 @@ export function tokenGetter(){
       ButtonsModule.forRoot(),
       MatNativeDateModule,
       PaginationModule.forRoot(),
+      SweetAlert2Module.forRoot(),
       ReactiveFormsModule,
       FileUploadModule,
       BrowserAnimationsModule,
