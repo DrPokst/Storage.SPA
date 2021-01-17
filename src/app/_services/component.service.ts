@@ -66,7 +66,7 @@ getComponent(id): Observable<Components>{
   return this.http.get<Components>(this.baseUrl + 'component/' + id);
 }
 getComponentMnf(mnf): Observable<Components>{
-  return this.http.get<Components>(this.baseUrl + 'component/' + mnf);
+  return this.http.get<Components>(this.baseUrl + 'component/mnf/' + mnf);
 }
 
 updateComponent(id: number, component: Components){

@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { AuthService } from './_services/auth.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import { AlertifyService } from './_services/alertify.service';
 import { Router } from '@angular/router';
 import { User } from './_models/user';
 import { cwd } from 'process';
+import { ComponentService } from './_services/component.service';
+import { Components } from './_models/components';
 
 
 @Component({
@@ -17,8 +19,9 @@ export class AppComponent implements OnInit {
   events: string[] = [];
   opened: boolean;
   user: User;
+  search: string;
   
-  constructor(public authService: AuthService, private  alertify: AlertifyService, private router: Router){}
+  constructor(public authService: AuthService, private componentService: ComponentService, private  alertify: AlertifyService, private router: Router){}
   
   ngOnInit(){
     const token = localStorage.getItem('token');
@@ -39,6 +42,16 @@ export class AppComponent implements OnInit {
   }
   loggedIn(){
     return this.authService.loggedIn();
+  }
+  onEnter() {
+
+    this.componentService.getComponentMnf(this.search).subscribe((component: Components) => {
+      this.router.navigate(['/members/'+ component.id]);
+      this.search = '';
+    }, error => {
+      console.log(error);
+    });
+    
   }
   logout(){
     localStorage.removeItem('token');
