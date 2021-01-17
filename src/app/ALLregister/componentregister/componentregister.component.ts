@@ -5,6 +5,7 @@ import { ReelService } from 'src/app/_services/reel.service';
 import { ComponentService } from 'src/app/_services/component.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-componentregister',
@@ -91,7 +92,12 @@ export class ComponentregisterComponent implements OnInit {
 
 
     this.componentService.registerComponent(formData). subscribe(()=>{
-      this.alertify.success('sekmingai uzregistruota');
+      Swal.fire({
+        icon: 'success',
+        title: 'Your component has been registered',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.router.navigate(['/members']);
     }, error => {
       this.alertify.error(error);

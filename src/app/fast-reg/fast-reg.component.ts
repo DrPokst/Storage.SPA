@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -15,6 +15,7 @@ import { AlertifyService } from '../_services/alertify.service';
 import { AuthService } from '../_services/auth.service';
 import { ComponentService } from '../_services/component.service';
 import { ReelService } from '../_services/reel.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-fast-reg',
@@ -42,16 +43,17 @@ export class FastRegComponent implements OnInit {
   reels: Reels;
   jwtHelper = new JwtHelperService();
   condition = false;
-
+  loaded: boolean;
+  
   constructor(private componentService: ComponentService,
-              private reelService: ReelService,
-              private alertify: AlertifyService,
-              private route: ActivatedRoute,
-              public dialog: MatDialog,
-              private dialogComponent: DialogComponent,
-              public authService: AuthService,
-              public dialogRef: MatDialogRef<DialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) { }
+    private reelService: ReelService,
+    private alertify: AlertifyService,
+    private route: ActivatedRoute,
+    public dialog: MatDialog,
+    private dialogComponent: DialogComponent,
+    public authService: AuthService,
+    public dialogRef: MatDialogRef<DialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     this.loadMnfs();
@@ -96,8 +98,14 @@ export class FastRegComponent implements OnInit {
     this.dialog.open(DialogComponent);
   }
 
-
+  
   SetLocation() {
+    Swal.fire({
+      icon: 'info',
+      title: 'Pranešimas',
+      text: 'Put the reel on the shelf',
+      footer: '<a href>Nothing is happening?</a>'
+    })
     this.model.Id = this.id;
     this.model.QTY = 0;
     this.model.Token = localStorage.getItem('token');
@@ -106,8 +114,12 @@ export class FastRegComponent implements OnInit {
       this.ngOnInit();
       this.dialogComponent.close();
     }, error => {
-      this.alertify.error(error);
-      this.dialogComponent.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: '<a href>Why do I have this issue?</a>'
+      })
     });
 
     console.log(this.model);
@@ -143,6 +155,14 @@ export class FastRegComponent implements OnInit {
   }
 
   submit() {
+    Swal.fire({
+      title: 'Now loading',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      onOpen: () => {
+        Swal.showLoading();
+      }
+    })
 
     const formData = new FormData();
 
@@ -156,7 +176,13 @@ export class FastRegComponent implements OnInit {
     this.qty = this.registerForm.get('QTY').value;
 
     this.reelService.registerReel(formData).subscribe(() => {
-      this.alertify.success('sekmingai uzregistruota');
+    Swal.fire(
+        {
+        icon: 'success',
+        title: 'Your reel has been registered',
+        showConfirmButton: false,
+        timer: 1500
+    })
       this.loadReel(this.mnf);
     }, error => {
       this.alertify.error(error);
@@ -173,8 +199,50 @@ export class FastRegComponent implements OnInit {
       this.id = this.reels.id;
       console.log(this.reels.id);
       this.ngOnInit();
+      this.loaded = true;
     }, error => {
       this.alertify.error(error);
     });
+  }
+  btnpress() {
+    Swal.mixin({
+      input: 'text',
+      confirmButtonText: 'Next &rarr;',
+      showCancelButton: true,
+      progressSteps: ['1', '2', '3', '4', '5']
+    }).queue([
+      {
+        title: 'Input with list',
+        html: '<datalist id="myCustomList">' +
+          'myCustomList.value=this.optionFiltered' +
+          '<option  value="Doe"/>' +
+          '<option  value="Maxime"/>' +
+          '</datalist>',
+        input: 'text',
+        inputAttributes: {
+          list: this.filteredOptions[1]
+        },
+        showCancelButton: true
+      },
+      {
+
+      },
+      'Question 2',
+      'Question 3',
+      'Question 4',
+      'Question 5'
+    ]).then((result) => {
+      if (result) {
+        const answers = JSON.stringify(result)
+        Swal.fire({
+          title: 'All done!',
+          html: `
+            Your answers:
+            <pre><code>${answers}</code></pre>
+          `,
+          confirmButtonText: 'Lovely!'
+        })
+      }
+    })
   }
 }

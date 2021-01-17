@@ -1,4 +1,7 @@
-<mat-vertical-stepper [linear]="isLinear" #stepper>
+<button class="btn btn-secondary mt-5" (click)="btnpress()">Register</button>
+
+
+<mat-vertical-stepper>
   <mat-step >
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
       <ng-template matStepLabel>Užregistruoti ritę</ng-template>
@@ -51,7 +54,7 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Atspausdinti lipduką</ng-template>
-    <div class="pb-2 mb-3 ">
+    <div class="pb-2 mb-3" *ngIf="loaded === true">
       <div class="row">
         <div class="col-sm-3 border-right border-top border-bottom">
           <div id="print-section">
@@ -70,7 +73,7 @@
       </div>
     </div>
     <div>
-      <button matStepperNext class="btn btn-secondary" printSectionId="print-section" ngxPrint><i class="fa fa-print"
+      <button *ngIf="loaded === true" matStepperNext class="btn btn-secondary" printSectionId="print-section" ngxPrint><i class="fa fa-print"
           aria-hidden="true"></i>
         print</button>
     </div>
@@ -79,7 +82,7 @@
   <mat-step>
     <ng-template matStepLabel>Užklijuoti lipduką</ng-template>
  
-    <button matStepperNext (click)="openDialog()" (click)="SetLocation()" class="btn btn-secondary" >Next</button>
+    <button matStepperNext (click)="SetLocation()" class="btn btn-secondary" >Next</button>
     <img src="https://res.cloudinary.com/drpokst1/image/upload/v1601991408/41903635-surface-mount-electronic-component-tape-reel-isolated-on-the-white-background_hyhoag.jpg"
     alt="">
   </mat-step>
@@ -95,9 +98,5 @@
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
   </mat-step>
 </mat-vertical-stepper>

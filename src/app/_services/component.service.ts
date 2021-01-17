@@ -16,7 +16,7 @@ export class ComponentService {
 constructor(private http: HttpClient) { }
 
 getMnfs(): Observable<Components[]>{
-  return this.http.get<Components[]>(this.baseUrl + 'search/all');
+  return this.http.get<Components[]>(this.baseUrl + 'component/all');
 }
 getComponents(page?, itempsPerPage?, componentParams?): Observable<PaginatedResult<Components[]>>{
   const paginatedResult: PaginatedResult<Components[]> = new PaginatedResult<Components[]>();
@@ -50,7 +50,7 @@ getComponents(page?, itempsPerPage?, componentParams?): Observable<PaginatedResu
     }
   }
 
-  return this.http.get<Components[]>(this.baseUrl + 'search', {observe: 'response', params})
+  return this.http.get<Components[]>(this.baseUrl + 'component', {observe: 'response', params})
     .pipe(
       map(response => {
         paginatedResult.result = response.body;
@@ -63,25 +63,25 @@ getComponents(page?, itempsPerPage?, componentParams?): Observable<PaginatedResu
 }
 
 getComponent(id): Observable<Components>{
-  return this.http.get<Components>(this.baseUrl + 'search/' + id);
+  return this.http.get<Components>(this.baseUrl + 'component/' + id);
 }
 getComponentMnf(mnf): Observable<Components>{
-  return this.http.get<Components>(this.baseUrl + 'search/' + mnf);
+  return this.http.get<Components>(this.baseUrl + 'component/' + mnf);
 }
 
 updateComponent(id: number, component: Components){
-  return this.http.put(this.baseUrl + 'search/' + id, component);
+  return this.http.put(this.baseUrl + 'component/' + id, component);
 }
 
 registerComponent(model: any){
-  return this.http.post(this.baseUrl + 'search/registercomponent', model);
+  return this.http.post(this.baseUrl + 'component/registercomponent', model);
 }
 
 deletePhoto(componentId: number, id: number){
-  return this.http.delete(this.baseUrl + 'search/' + componentId + '/photos/' + id);
+  return this.http.delete(this.baseUrl + 'component/' + componentId + '/photos/' + id);
 }
 
 deleteComponent(componentId: NumberConstructor){
-  return this.http.delete(this.baseUrl + 'search/' + componentId);
+  return this.http.delete(this.baseUrl + 'component/' + componentId);
 }
 }

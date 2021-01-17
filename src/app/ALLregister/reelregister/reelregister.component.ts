@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ComponentService } from 'src/app/_services/component.service';
 import { Components } from 'src/app/_models/components';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reelregister',
@@ -83,7 +84,12 @@ export class ReelregisterComponent implements OnInit {
 
 
     this.reelService.registerReel(formData). subscribe(()=>{
-      this.alertify.success('sekmingai uzregistruota');
+      Swal.fire({
+        icon: 'success',
+        title: 'Your reel has been registered',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }, error => {
       this.alertify.error(error);
     });
