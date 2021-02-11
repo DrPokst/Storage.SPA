@@ -33,6 +33,7 @@ import { UserComponent } from './user/user.component';
 import { UploadComponent } from './BOM/upload/upload.component';
 import { CreateComponent } from './BOM/create/create.component';
 import { ComplistComponent } from './BOM/complist/complist.component';
+import { UserReelsComponent } from './user/user-reels/user-reels.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -70,6 +71,7 @@ export const appRoutes: Routes = [
             {path: 'fast', component: FastRegComponent, data: {roles: ['Member']}},
             {path: 'admin', component: AdminComponent, data: {roles: ['Admin']}},
             {path: 'userinfo', component: UserComponent},
+            {path: 'userinfo/reels', component: UserReelsComponent},
             {path: 'bom/:name', component: ComplistComponent}
         ]
     },

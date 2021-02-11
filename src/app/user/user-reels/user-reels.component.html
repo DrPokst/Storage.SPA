@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    
+    <h1 class="">Profile</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <button class="btn btn-sm btn-secondary" [routerLink]="['/userinfo']">Back</button>
+      </div>
+    </div>
+  
+  </div>
+  
+<div class="container mt-5">
+    <table id="mytable" class="table table-sm emp-profile">
+
+        <thead class="thead-dark">
+          <tr>
+            <th btnRadio="ID">ID</th>
+            <th btnRadio="CMnf">Manufacturer Number</th>
+            <th btnRadio="qty">QTY</th>
+          </tr>
+    
+    
+        </thead>
+        <tbody>
+          <tr *ngFor="let reel of reels">
+            <th scope="row">{{reel.id}}</th>
+            <td>{{reel.cMnf}}</td>
+            <td>{{reel.qty}}</td>
+    
+          </tr>
+        </tbody>
+      </table>
+</div>

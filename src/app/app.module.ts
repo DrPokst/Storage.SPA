@@ -77,6 +77,9 @@ import { CreateComponent } from './BOM/create/create.component';
 import { ComplistComponent } from './BOM/complist/complist.component';
 import { CreateModalComponent } from './BOM/create-modal/create-modal.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { UserReelsComponent } from './user/user-reels/user-reels.component';
+import { PhotoEditComponent } from './user/photo-edit/photo-edit.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 
 
@@ -128,7 +131,9 @@ export function tokenGetter(){
       UploadComponent,
       CreateComponent,
       ComplistComponent,
-      CreateModalComponent
+      CreateModalComponent,
+      UserReelsComponent,
+      PhotoEditComponent
    ],
    imports: [
       BrowserModule,
@@ -138,6 +143,7 @@ export function tokenGetter(){
       MatDialogModule,
       CalendarModule,
       NgxPrintModule,
+      YouTubePlayerModule,
       DemoMaterialModule,
       AutocompleteLibModule,
       ReactiveFormsModule,

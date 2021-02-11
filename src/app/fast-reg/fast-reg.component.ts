@@ -72,9 +72,12 @@ export class FastRegComponent implements OnInit {
     );
   }
 
+  
+
   InputChange(fileInputEvent: any) {
     console.log(fileInputEvent.target.files[0]);
   }
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
@@ -155,6 +158,7 @@ export class FastRegComponent implements OnInit {
   }
 
   submit() {
+    this.mnf = this.myControl.value;
     Swal.fire({
       title: 'Now loading',
       allowEscapeKey: false,
@@ -167,12 +171,11 @@ export class FastRegComponent implements OnInit {
     const formData = new FormData();
 
     formData.append('file', this.registerForm.get('fileSource').value);
-    formData.append('CMnf', this.registerForm.get('CMnf').value);
+    formData.append('CMnf', this.mnf);
     formData.append('QTY', this.registerForm.get('QTY').value);
 
     this.model = Object.assign({}, this.registerForm.value);
 
-    this.mnf = this.registerForm.get('CMnf').value;
     this.qty = this.registerForm.get('QTY').value;
 
     this.reelService.registerReel(formData).subscribe(() => {
@@ -187,7 +190,6 @@ export class FastRegComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
-    console.log(this.registerForm.get('CMnf').value);
     this.registerForm.reset();
     this.imageURL = null;
   }
@@ -204,45 +206,5 @@ export class FastRegComponent implements OnInit {
       this.alertify.error(error);
     });
   }
-  btnpress() {
-    Swal.mixin({
-      input: 'text',
-      confirmButtonText: 'Next &rarr;',
-      showCancelButton: true,
-      progressSteps: ['1', '2', '3', '4', '5']
-    }).queue([
-      {
-        title: 'Input with list',
-        html: '<datalist id="myCustomList">' +
-          'myCustomList.value=this.optionFiltered' +
-          '<option  value="Doe"/>' +
-          '<option  value="Maxime"/>' +
-          '</datalist>',
-        input: 'text',
-        inputAttributes: {
-          list: this.filteredOptions[1]
-        },
-        showCancelButton: true
-      },
-      {
 
-      },
-      'Question 2',
-      'Question 3',
-      'Question 4',
-      'Question 5'
-    ]).then((result) => {
-      if (result) {
-        const answers = JSON.stringify(result)
-        Swal.fire({
-          title: 'All done!',
-          html: `
-            Your answers:
-            <pre><code>${answers}</code></pre>
-          `,
-          confirmButtonText: 'Lovely!'
-        })
-      }
-    })
-  }
 }

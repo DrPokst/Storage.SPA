@@ -1,25 +1,18 @@
-<button class="btn btn-secondary mt-5" (click)="btnpress()">Register</button>
-
-
 <mat-vertical-stepper>
-  <mat-step >
+  <mat-step>
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
       <ng-template matStepLabel>Užregistruoti ritę</ng-template>
       <div class="row">
         <div class="col-sm-4">
           <mat-form-field *ngIf="condition" class="example-full-width">
-            <input type="text"
-           placeholder="Pick one"
-           aria-label="Number"
-           matInput
-            [formControl]="registerForm.get('CMnf')" [matAutocomplete]="auto">
+            <input type="text" placeholder="Pick one" aria-label="Number" matInput
+              [formControl]="myControl" [matAutocomplete]="auto">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions | async" [value]="option"> 
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                 {{option}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-
           <div>
             <mat-form-field class="example-form-field">
               <mat-label>QTY</mat-label>
@@ -29,15 +22,15 @@
           <div class="mt-3">
             <div class="form-group">
               <div class="input-group">
-                  <span class="input-group-btn">
-                      <span class="btn btn-default btn-file btn-outline-secondary">
-                          Browse… 
-                          <input type="file" formControlName="file" id="file" class="form-control"
-                          (change)="onFileChange($event)" (change)="showPreview($event)">
-                      </span>
+                <span class="input-group-btn">
+                  <span class="btn btn-default btn-file btn-outline-secondary">
+                    Browse…
+                    <input type="file" formControlName="file" id="file" class="form-control"
+                      (change)="onFileChange($event)" (change)="showPreview($event)">
                   </span>
+                </span>
               </div>
-          </div>
+            </div>
             <button [disabled]="!registerForm.valid" class="btn btn-sm btn-outline-secondary btn-block" type="submit"
               class="btn btn-secondary mt-5" matStepperNext>Register</button>
 
@@ -47,7 +40,8 @@
         <div class="col-sm-4"><img *ngIf="!imageURL"
             src="https://previews.123rf.com/images/audriusmerfeldas/audriusmerfeldas1506/audriusmerfeldas150600223/41903635-surface-mount-electronic-component-tape-reel-isolated-on-the-white-background.jpg"
             alt="">
-            <img *ngIf="imageURL" [src]="imageURL" height="file" width="100%"/></div>
+          <img *ngIf="imageURL" [src]="imageURL" height="file" width="100%" />
+        </div>
         <div class="col-sm-4"></div>
       </div>
     </form>
@@ -73,18 +67,19 @@
       </div>
     </div>
     <div>
-      <button *ngIf="loaded === true" matStepperNext class="btn btn-secondary" printSectionId="print-section" ngxPrint><i class="fa fa-print"
-          aria-hidden="true"></i>
+      <button *ngIf="loaded === true" matStepperNext class="btn btn-secondary" printSectionId="print-section"
+        ngxPrint><i class="fa fa-print" aria-hidden="true"></i>
         print</button>
     </div>
 
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Užklijuoti lipduką</ng-template>
- 
-    <button matStepperNext (click)="SetLocation()" class="btn btn-secondary" >Next</button>
-    <img src="https://res.cloudinary.com/drpokst1/image/upload/v1601991408/41903635-surface-mount-electronic-component-tape-reel-isolated-on-the-white-background_hyhoag.jpg"
-    alt="">
+
+    <button matStepperNext (click)="SetLocation()" class="btn btn-secondary">Next</button>
+    <img
+      src="https://res.cloudinary.com/drpokst1/image/upload/v1601991408/41903635-surface-mount-electronic-component-tape-reel-isolated-on-the-white-background_hyhoag.jpg"
+      alt="">
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Padėti ritę</ng-template>

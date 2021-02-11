@@ -97,6 +97,7 @@ export class ReelregisterComponent implements OnInit {
     console.log(formData);
     this.registerForm.reset();
     this.imageURL = null;
+    this.model.clear();
   }
 
 }
