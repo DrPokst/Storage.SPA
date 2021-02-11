@@ -24,27 +24,33 @@ export class AppComponent implements OnInit {
   constructor(public authService: AuthService, private componentService: ComponentService, private  alertify: AlertifyService, private router: Router){}
   
   ngOnInit(){
+    this.GetName();
+  }
+  ngDoCheck() {
+    if (this.user == null){
+      if  (this.authService.loggedIn() != null)
+    {
+      this.ngOnInit();
+    }
+    }
+    
+  }
+  GetName(){
     const token = localStorage.getItem('token');
     if (token){
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
+      this.authService.getUserInfo(this.authService.decodedToken.unique_name).subscribe((user: User) => {
+        this.user = user;
+      }, error => {
+        console.log(error);
+      });
     }
-    this.authService.getUserInfo(this.authService.decodedToken.unique_name).subscribe((user: User) => {
-      this.user = user;
-    }, error => {
-      console.log(error);
-    });
-    /* this.authService.getUser(this.authService.decodedToken).subscribe((user: User) => {
-      this.user = user;
-    }, error => {
-      this.alertify.error(error);
-    }); */
-
   }
   loggedIn(){
     return this.authService.loggedIn();
   }
+  
   onEnter() {
-
     this.componentService.getComponentMnf(this.search).subscribe((component: Components) => {
       this.router.navigate(['/members/'+ component.id]);
       this.search = '';
@@ -57,6 +63,6 @@ export class AppComponent implements OnInit {
     localStorage.removeItem('token');
     this.alertify.message('logged out');
     this.router.navigate(['/home']);
-    this.user.photoUrl = "cc";
+    this.user = null;
   }
 }

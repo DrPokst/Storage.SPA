@@ -1,7 +1,7 @@
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 
 @Component({
@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   model: any = {};
   registerMode = false;
+ 
   constructor(private authService: AuthService, private  alertify: AlertifyService, private router: Router) { }
 
   ngOnInit(): void {
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.authService.login(this.model).subscribe(next => {
       this.alertify.success('Prisijungta sekmingai');
+      this.router.navigate(['/']);
     }, error =>{
       this.alertify.error(error);
     }, ()=> {
@@ -45,12 +47,6 @@ export class LoginComponent implements OnInit {
 
   loggedIn(){
     return this.authService.loggedIn();
-  }
-
-  logout(){
-    localStorage.removeItem('token');
-    this.alertify.message('logged out');
-    this.router.navigate(['/home']);
   }
 
 }
