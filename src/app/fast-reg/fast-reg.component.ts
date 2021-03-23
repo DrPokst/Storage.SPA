@@ -16,6 +16,7 @@ import { AuthService } from '../_services/auth.service';
 import { ComponentService } from '../_services/component.service';
 import { ReelService } from '../_services/reel.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { WebcamImage } from 'ngx-webcam';
 
 @Component({
   selector: 'app-fast-reg',
@@ -33,7 +34,7 @@ export class FastRegComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   model: any = {};
   public imagePath;
-  imageURL: string;
+  imageURL: string = null;
   url: any;
   components: Components[];
   options: string[] = [];
@@ -44,6 +45,15 @@ export class FastRegComponent implements OnInit {
   jwtHelper = new JwtHelperService();
   condition = false;
   loaded: boolean;
+  
+  // latest snapshot
+  public webcamImage: WebcamImage = null;
+
+  handleImage(webcamImage: WebcamImage) {
+    this.webcamImage = webcamImage;
+    console.log(this.webcamImage);
+    
+  }
   
   constructor(private componentService: ComponentService,
     private reelService: ReelService,
@@ -61,8 +71,8 @@ export class FastRegComponent implements OnInit {
       {
         CMnf: new FormControl(),
         QTY: new FormControl(),
-        file: new FormControl('', [Validators.required]),
-        fileSource: new FormControl('', [Validators.required])
+        file: new FormControl(),
+        fileSource: new FormControl()
       }
 
     );
@@ -109,6 +119,7 @@ export class FastRegComponent implements OnInit {
       text: 'Put the reel on the shelf',
       footer: '<a href>Nothing is happening?</a>'
     })
+    this.model.CMnf = this.mnf;
     this.model.Id = this.id;
     this.model.QTY = 0;
     this.model.Token = localStorage.getItem('token');
@@ -139,22 +150,31 @@ export class FastRegComponent implements OnInit {
         fileSource: file
 
       });
+
+      console.log(file);
+      console.log(this.registerForm.get('fileSource').value);
     }
   }
 
   showPreview(event) {
+   
     const file = (event.target as HTMLInputElement).files[0];
     this.registerForm.patchValue({
       fileSource: file
     });
     this.registerForm.get('fileSource').updateValueAndValidity()
 
+    
     // File Preview
     const reader = new FileReader();
     reader.onload = () => {
       this.imageURL = reader.result as string;
     };
     reader.readAsDataURL(file);
+    
+    if (file == null) {
+      this.imageURL = null;
+  }
   }
 
   submit() {
@@ -170,7 +190,11 @@ export class FastRegComponent implements OnInit {
 
     const formData = new FormData();
 
-    formData.append('file', this.registerForm.get('fileSource').value);
+    if (this.registerForm.get('fileSource').value == null) {
+     
+    }
+    
+    formData.append('URL', this.webcamImage.imageAsBase64);
     formData.append('CMnf', this.mnf);
     formData.append('QTY', this.registerForm.get('QTY').value);
 

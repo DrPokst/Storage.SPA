@@ -1,6 +1,6 @@
 {
-  "name": "dating-app-spa",
-  "version": "0.0.0",
+  "name": "storage-app-spa",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -46,6 +46,7 @@
     "ngx-barcode": "^0.2.4",
     "ngx-bootstrap": "^5.5.0",
     "ngx-print": "^1.2.0-beta.4",
+    "ngx-webcam": "^0.3.2",
     "rxjs": "~6.5.4",
     "sweetalert2": "^10.11.0",
     "tslib": "^1.10.0",

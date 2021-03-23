@@ -4,6 +4,7 @@
     transition-timing-function: ease-out;
 }
 .card img{
+    height: 130px;
     transform: scale(1.0, 1.0);
     transition-duration: 250ms;
     transition-timing-function: ease-out;
@@ -31,7 +32,4 @@
 
 .animate {
     transition: all 0.3s ease-in-out
-}
-.card{
-    color: black;
 }

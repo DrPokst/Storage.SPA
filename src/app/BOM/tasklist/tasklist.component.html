@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+    <h1 class="" *ngIf="taskNameList != null">{{taskNameList.name}}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <button class="btn btn-sm btn-secondary" [routerLink]="['/bom']">Back</button>
+            <button class="btn btn-sm btn-outline-secondary">Print</button>
+            <button class="btn btn-sm btn-outline-secondary" (click)="ngOnInit()">Refresh</button>
+            <button class="btn btn-sm btn-outline-secondary">Delete</button>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="this.stateEmitter == 1">
+    <div class="progress ">
+        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100">25% </div>
+    </div>
+    <app-firststep [taskNameList]="this.taskNameList" (newItemEvent)="addItem($event)"></app-firststep>
+</div>
+
+
+<div *ngIf="this.stateEmitter == 2">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+            aria-valuemax="100">50% </div>
+    </div>
+    <app-secondstep [checkedTaskList]="this.checkedTaskList" [checkedForShortTaskList]="this.checkedForShortTaskList"></app-secondstep>
+    Nerastu komponentu saraso isskyrimas ir darbas su juo komentavimas so on, so on
+</div>
+
+
+<div *ngIf="this.stateEmitter == 3">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+            aria-valuemax="100">75% </div>
+        <app-thridstep></app-thridstep>
+    </div>
+
+</div>
+
+<div *ngIf="this.stateEmitter == 4">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+            aria-valuemax="100">100% </div>
+        Bendro saraso rodymas su komentarais be editinimo
+    </div>
+</div>

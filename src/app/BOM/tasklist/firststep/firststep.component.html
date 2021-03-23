@@ -1,0 +1,43 @@
+<table mat-table [dataSource]="this.taskNameList.taskList" multiTemplateDataRows>
+    <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+        <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+        <td (click)="GetComponent(element.componentasId)" mat-cell *matCellDef="let element"> {{element[column]}} </td>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail">
+        <td  mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length" > 
+            <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                <div class="row">
+                    <div class="example-element-description" >
+                        Status: <span class="badge badge-pill badge-secondary">{{taskNameList.status}}</span>
+                    </div>
+                    <div class="example-element-description" >
+                        BOM name: {{taskNameList.bomName}}
+                    </div><div class="example-element-description" >
+                        Date Added: {{taskNameList.dateAdded | date}}
+                    </div>
+                </div>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-top">
+
+    <h1 class="" ></h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/bom']">Back</button>
+            <button class="btn btn-sm btn-secondary" (click)="GoNext(taskNameList.name)">Next Step</button>
+        </div>
+    </div>
+
+</div>

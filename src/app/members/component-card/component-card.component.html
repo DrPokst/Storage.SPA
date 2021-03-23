@@ -1,20 +1,25 @@
-<div class="card mb-2">
+<div class="card mb-2" style="width: 8rem;">
   <div class="card-img-wrapper">
-    <img  calss="card-img-top" class="img-thumbnail" src="{{components?.photoUrl}}" alt="{{components.mnf}}">
+    <img class="card-img-top" class="img-thumbnail" src="{{components?.photoUrl}}" alt="{{components.mnf}}">
     <ul class="list-inline member-icons animate text-center">
-      <li class="list-inline-item"><button class="btn btn-dark btn-sm" [routerLink]="['/members/', components.id]"><i class="fa fa-info" aria-hidden="true"></i></button></li>
-      <li class="list-inline-item"><button class="btn btn-dark btn-sm"><i class="fa fa-plus-square" aria-hidden="true"></i></button></li>
-      <li class="list-inline-item"><button class="btn btn-dark btn-sm"><i class="fa fa-print" aria-hidden="true"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-dark btn-sm" [routerLink]="['/members/', components.id]"><i
+            class="fa fa-info" aria-hidden="true"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-dark btn-sm"><i class="fa fa-plus-square"
+            aria-hidden="true"></i></button></li>
+      <li class="list-inline-item"><button class="btn btn-dark btn-sm"><i class="fa fa-print"
+            aria-hidden="true"></i></button></li>
     </ul>
   </div>
   <div class="card-body p-1">
-    
-    <h5 class="card-title text-center mb-1">
-        {{components.size}}   {{components.nominal}}
+
+    <h5 class="card-title text-center mb-1" *ngIf="components.size !== 'n'">
+      {{components.size}} {{components.nominal}} {{components.mnf}}
     </h5>
-    <p class="card-text text-center">{{components.type}}</p>
+    <h5 class="card-title text-center mb-1" *ngIf="components.size === 'n'">
+      {{components.nominal}} {{components.type}}
+    </h5>
   </div>
 
 
-  
+
 </div>

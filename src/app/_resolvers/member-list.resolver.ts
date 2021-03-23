@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class MemberListResolver implements Resolve<Components[]>{
     pageNumber = 1;
-    pageSize = 24;
+    pageSize = 36;
     
     constructor(private componentService: ComponentService, private router: Router, private alertify: AlertifyService) {}
     resolve(route: ActivatedRouteSnapshot): Observable<Components[]>{

@@ -1,25 +1,28 @@
 <div class="modal-header">
     Create
 </div>
-<div class="modal-body">
-    <div class="form-group">
-        <label>Name</label>
-        <input class="form-control" type="text" placeholder="Write name">
+<form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" formControlName="Name" type="text" placeholder="Write name">
+        </div>
+        <div class="form-group">
+            <label for="modal-label">Select BOM name</label>
+            <select class="form-control" formControlName="BomName" id="modal-label">
+                <option *ngFor="let bomName of bomNames">
+                    {{bomName.name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Quantity</label>
+            <input class="form-control" formControlName="Qty" type="number"
+                placeholder="Write quantity will be produced">
+        </div>
     </div>
-    <div class="form-group">
-        <label for="modal-label">Select BOM name</label>
-        <select class="form-control" id="modal-label">
-            <option  *ngFor="let bomName of bomNames">
-                {{bomName.name}}
-            </option>
-        </select>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancel</button>
+        <button  type="submit" class="btn btn-sm btn-secondary">Submit</button>
     </div>
-    <div class="form-group">
-        <label>Quantity</label>
-        <input class="form-control" type="number" placeholder="Write quantity will be produced">
-    </div>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancel</button>
-    <button type="button" class="btn btn-sm btn-secondary">Submit</button>
-</div>
+</form>

@@ -53,6 +53,7 @@
                             <option>CAP</option>
                             <option>IC</option>
                             <option>DIODE</option>
+                            <option>CONN</option>
                             <option>ETC</option>
                         </select>
                     </div>
@@ -107,7 +108,7 @@
                             (change)="onFileChange($event)"
                             (change)="showPreview($event)"
                         />
-                        <img [src]="imageURL" height="file" width="60%"> 
+                        <img *ngIf="imageURL !== null" [src]="imageURL" height="file" width="60%"> 
                               
                         
                     </div>

@@ -5,8 +5,8 @@
       <div class="row">
         <div class="col-sm-4">
           <mat-form-field *ngIf="condition" class="example-full-width">
-            <input type="text" placeholder="Pick one" aria-label="Number" matInput
-              [formControl]="myControl" [matAutocomplete]="auto">
+            <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+              [matAutocomplete]="auto">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
               <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                 {{option}}
@@ -37,12 +37,20 @@
 
           </div>
         </div>
-        <div class="col-sm-4"><img *ngIf="!imageURL"
-            src="https://previews.123rf.com/images/audriusmerfeldas/audriusmerfeldas1506/audriusmerfeldas150600223/41903635-surface-mount-electronic-component-tape-reel-isolated-on-the-white-background.jpg"
-            alt="">
-          <img *ngIf="imageURL" [src]="imageURL" height="file" width="100%" />
+        <div class="col-sm-4" *ngIf="webcamImage === null && imageURL === null">
+          <app-camera (pictureTaken)="handleImage($event)"></app-camera>
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-4" *ngIf="webcamImage !== null">
+          <div class="snapshot" >
+            <img [src]="webcamImage.imageAsDataUrl" />
+          </div>
+        </div>
+        <div class="col-sm-4" *ngIf="imageURL !== null && webcamImage === null ">
+          <div class="snapshot" >
+            <img [src]="imageURL" />
+          </div>
+        </div>
+
       </div>
     </form>
   </mat-step>

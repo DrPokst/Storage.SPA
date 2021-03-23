@@ -80,6 +80,12 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { UserReelsComponent } from './user/user-reels/user-reels.component';
 import { PhotoEditComponent } from './user/photo-edit/photo-edit.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { TasklistComponent } from './BOM/tasklist/tasklist.component';
+import { FirststepComponent } from './BOM/tasklist/firststep/firststep.component';
+import { SecondstepComponent } from './BOM/tasklist/secondstep/secondstep.component';
+import { ThridstepComponent } from './BOM/tasklist/thridstep/thridstep.component';
+import { WebcamModule } from 'ngx-webcam';
+import { CameraComponent } from './fast-reg/camera/camera.component';
 
 
 
@@ -133,12 +139,18 @@ export function tokenGetter(){
       ComplistComponent,
       CreateModalComponent,
       UserReelsComponent,
-      PhotoEditComponent
+      PhotoEditComponent,
+      TasklistComponent,
+      FirststepComponent,
+      SecondstepComponent,
+      ThridstepComponent,
+      CameraComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      WebcamModule,
       MatSidenavModule,
       MatDialogModule,
       CalendarModule,

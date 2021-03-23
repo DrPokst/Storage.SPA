@@ -15,7 +15,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class ComponentregisterComponent implements OnInit {
   model: any = {};
   public imagePath;
-  imageURL: string;
+  imageURL: string = null;
   url: any;
   @Output() cancelRegister = new EventEmitter();
   registerForm: FormGroup;
@@ -70,6 +70,11 @@ export class ComponentregisterComponent implements OnInit {
       this.imageURL = reader.result as string;
     };
     reader.readAsDataURL(file);
+
+    if (file == null) {
+      this.imageURL = null;
+    }
+
   }
 
   submit(){
@@ -102,8 +107,9 @@ export class ComponentregisterComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
-    
-    console.log(formData);
+
+    this.registerForm.reset();
+    this.imageURL = null;
 
     
   }

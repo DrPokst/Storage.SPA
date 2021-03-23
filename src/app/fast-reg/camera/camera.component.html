@@ -1,0 +1,12 @@
+<div style="text-align:center">
+	<div>
+		<webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+		 [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
+		 (initError)="handleInitError($event)"></webcam>
+		<br/>
+		<div class="btn-group">
+			<button  type="button" class="btn btn-secondary actionBtn" (click)="triggerSnapshot();" title="Take Picture">📸</button>
+			<button type="button" class="btn btn-sm btn-outline-secondary actionBtn" (click)="showNextWebcam(true);" title="Switch Camera">🔁</button>
+		  </div>
+	</div>
+</div>

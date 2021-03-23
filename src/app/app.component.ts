@@ -1,6 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { AuthService } from './_services/auth.service';
-import {JwtHelperService} from '@auth0/angular-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AlertifyService } from './_services/alertify.service';
 import { Router } from '@angular/router';
 import { User } from './_models/user';
@@ -20,24 +20,23 @@ export class AppComponent implements OnInit {
   opened: boolean;
   user: User;
   search: string;
-  
-  constructor(public authService: AuthService, private componentService: ComponentService, private  alertify: AlertifyService, private router: Router){}
-  
-  ngOnInit(){
+
+  constructor(public authService: AuthService, private componentService: ComponentService, private alertify: AlertifyService, private router: Router) { }
+
+  ngOnInit() {
     this.GetName();
   }
   ngDoCheck() {
-    if (this.user == null){
-      if  (this.authService.loggedIn() != null)
-    {
-      this.ngOnInit();
+    if (this.user == null) {
+      if (this.authService.loggedIn() != null) {
+        this.ngOnInit();
+      }
     }
-    }
-    
+
   }
-  GetName(){
+  GetName() {
     const token = localStorage.getItem('token');
-    if (token){
+    if (token) {
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
       this.authService.getUserInfo(this.authService.decodedToken.unique_name).subscribe((user: User) => {
         this.user = user;
@@ -46,20 +45,20 @@ export class AppComponent implements OnInit {
       });
     }
   }
-  loggedIn(){
+  loggedIn() {
     return this.authService.loggedIn();
   }
-  
+
   onEnter() {
     this.componentService.getComponentMnf(this.search).subscribe((component: Components) => {
-      this.router.navigate(['/members/'+ component.id]);
+      this.router.navigate(['/members/' + component.id]);
       this.search = '';
     }, error => {
       console.log(error);
     });
-    
+
   }
-  logout(){
+  logout() {
     localStorage.removeItem('token');
     this.alertify.message('logged out');
     this.router.navigate(['/home']);
