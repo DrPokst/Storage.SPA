@@ -33,6 +33,7 @@ export class FastRegComponent implements OnInit {
   myControl = new FormControl();
   filteredOptions: Observable<string[]>;
   model: any = {};
+  model2: any = {};
   public imagePath;
   imageURL: string = null;
   url: any;
@@ -119,14 +120,20 @@ export class FastRegComponent implements OnInit {
       text: 'Put the reel on the shelf',
       footer: '<a href>Nothing is happening?</a>'
     })
-    this.model.CMnf = this.mnf;
-    this.model.Id = this.id;
-    this.model.QTY = 0;
-    this.model.Token = localStorage.getItem('token');
-    this.reelService.SetLocation(this.model).subscribe(() => {
+    this.model2.Mnf = this.mnf;
+    this.model2.Id = this.id;
+    this.model2.QTY = 0;
+    this.model2.Token = localStorage.getItem('token');
+    this.reelService.SetLocation(this.model2).subscribe(() => {
       this.alertify.success('sekmingai uzregistruota');
       this.ngOnInit();
-      this.dialogComponent.close();
+      Swal.fire(
+        {
+        icon: 'success',
+        title: 'Reels location set',
+        showConfirmButton: false,
+        timer: 1500
+    })
     }, error => {
       Swal.fire({
         icon: 'error',
@@ -136,7 +143,7 @@ export class FastRegComponent implements OnInit {
       })
     });
 
-    console.log(this.model);
+    console.log(this.model2);
   }
 
   onFileChange(event) {

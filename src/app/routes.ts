@@ -35,10 +35,11 @@ import { CreateComponent } from './BOM/create/create.component';
 import { ComplistComponent } from './BOM/complist/complist.component';
 import { UserReelsComponent } from './user/user-reels/user-reels.component';
 import { TasklistComponent } from './BOM/tasklist/tasklist.component';
+import { UserHistoryComponent } from './user/user-history/user-history.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
-    
+
     /*  antras variantas padaryt apsauga   */
     {
         path: '',
@@ -73,17 +74,18 @@ export const appRoutes: Routes = [
             {path: 'admin', component: AdminComponent, data: {roles: ['Admin']}},
             {path: 'userinfo', component: UserComponent},
             {path: 'userinfo/reels', component: UserReelsComponent},
+            {path: 'userinfo/history', component: UserHistoryComponent},
             {path: 'bom/:name', component: ComplistComponent},
             {path: 'task/:name', component: TasklistComponent}
         ]
     },
-      
-    /*  antras variantas padaryt apsauga 
+
+    /*  antras variantas padaryt apsauga
     {path: 'members', component: MemberListComponent, canActivate: [AuthGuard]},
     {path: 'messages', component: MessagesComponent, canActivate: [AuthGuard]},
     {path: 'lists', component: ListsComponent, canActivate: [AuthGuard]},
     */
-    
+
     {path: '**', redirectTo: '', pathMatch: 'full'},
     {path: 'phpmyadmin', redirectTo: 'phpmyadmin', pathMatch: 'full'},
 ];

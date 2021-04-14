@@ -1,4 +1,4 @@
-<mat-vertical-stepper>
+<mat-vertical-stepper #stepper>
   <mat-step>
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
       <ng-template matStepLabel>Užregistruoti ritę</ng-template>
@@ -94,12 +94,8 @@
     <p>Padėti ritę į laisvą vietą</p>
     <div>
 
-      <button matStepperNext class="btn btn-secondary">Next</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
 
     </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
   </mat-step>
 </mat-vertical-stepper>

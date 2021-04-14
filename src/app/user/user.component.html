@@ -1,10 +1,10 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
- 
+
   <h1 class="">Profile</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
       <button [routerLink]="['/userinfo/reels']" class="btn btn-sm btn-outline-secondary">Reels</button>
-      <button [routerLink]="['/userinfo/reels']" class="btn btn-sm btn-outline-secondary">History</button>
+      <button [routerLink]="['/userinfo/history']" class="btn btn-sm btn-outline-secondary">History</button>
       <button class="btn btn-sm btn-secondary" [routerLink]="['/members']">Back</button>
     </div>
   </div>
@@ -12,4 +12,3 @@
 </div>
 
 <app-photo-edit *ngIf="this.user != null" [useris] = "this.user" ></app-photo-edit>
- 

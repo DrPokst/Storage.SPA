@@ -9,5 +9,4 @@ export interface history {
     dateAdded: Date;
     componentasId: number;
     reelId: number;
-    
 }

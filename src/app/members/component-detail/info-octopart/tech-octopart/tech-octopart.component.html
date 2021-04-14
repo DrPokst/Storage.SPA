@@ -1,0 +1,36 @@
+<h3 class=""><Strong>  Technical  </Strong></h3>
+<table class="table table-hover technical" style="width: 80%;">
+  <tbody>
+    <tr *ngFor="let specs of this.info.search.results[0].part.specs">
+      <td style="width: 50%" *ngIf="specs.attribute.group === 'Technical'">{{specs.attribute.name}}</td>
+      <td style="width: 50%" *ngIf="specs.attribute.group === 'Technical'">{{specs.display_value}}</td>
+    </tr>
+  </tbody>
+</table>
+<h3><strong> Physical  </strong></h3>
+<table class="table table-hover Physical" style="width: 80%;">
+  <tbody>
+    <tr *ngFor="let specs of this.info.search.results[0].part.specs" >
+      <td style="width: 50%" *ngIf="specs.attribute.group === 'Physical'">{{specs.attribute.name}}</td>
+      <td style="width: 50%" *ngIf="specs.attribute.group === 'Physical'">{{specs.display_value}}</td>
+    </tr>
+  </tbody>
+</table>
+<h3><strong> Dimensions </strong>  </h3>
+<table class="table table-hover Dimensions" style="width: 80%;">
+  <tbody>
+    <tr *ngFor="let specs of this.info.search.results[0].part.specs" >
+      <td style="width: 50%" *ngIf="specs.attribute.group === 'Dimensions'">{{specs.attribute.name}}</td>
+      <td style="width: 50%" *ngIf="specs.attribute.group === 'Dimensions'">{{specs.display_value}}</td>
+    </tr>
+  </tbody>
+</table>
+<h3><strong>Compliance </strong> </h3>
+<table class="table table-hover Physical" style="width: 80%;">
+  <tbody>
+    <tr *ngFor="let specs of this.info.search.results[0].part.specs" >
+      <td style="width: 50%" *ngIf="specs.attribute.group === 'Compliance'">{{specs.attribute.name}}</td>
+      <td style="width: 50%" *ngIf="specs.attribute.group === 'Compliance'">{{specs.display_value}}</td>
+    </tr>
+  </tbody>
+</table>

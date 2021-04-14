@@ -2,7 +2,7 @@
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
-    <h1 class="">{{components.mnf}}</h1>
+    <h1 class="text-center">{{components.mnf}}</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">
         <button class="btn btn-sm btn-secondary" [routerLink]="['/members']">Back</button>
@@ -18,106 +18,16 @@
 
 
 <div class="row">
-  <div class="col-md-5 mt-5">
 
-    <div class="profile-img">
-      <img src="{{components.photoUrl}}" alt="" />
-      <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
-    </div>
-
-    <div class="">
-      <div class="row">
-        <div class="col-md-6">
-          <label>Buh. no</label>
-        </div>
-        <div class="col-md-6">
-          <h4>{{components.buhNr}}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Manufacturer number</label>
-        </div>
-        <div class="col-md-6">
-          <h4>{{components.mnf}}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Nominal</label>
-        </div>
-        <div class="col-md-6">
-          <h4>{{components.nominal}}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Type</label>
-        </div>
-        <div class="col-md-6">
-          <h4>{{components.type}}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Size</label>
-        </div>
-        <div class="col-md-6">
-          <h4>{{components.size}}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Manufacturer</label>
-        </div>
-        <div class="col-md-6">
-          <h4>{{components.manufacturer}}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Nominal</label>
-        </div>
-        <div class="col-md-6">
-          <h4>{{components.nominal}}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Description</label>
-        </div>
-        <div class="col-md-6">
-          <h4> {{components.size}} {{components.nominal}} <strong>{{components.mnf}}</strong></h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label>Detail Description</label>
-        </div>
-        <div class="col-md-6">
-          <h4>{{components.detdescription}}</h4>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <div class="col-md-2 mt-5">
-    
-    <p class="proile-rating">Component created: <span>{{components.created | date}}</span></p>
-
-    <div class="profile-work">
-      <p>LINKS</p>
-      <a href="{{components.furl}}" target="_blank">Farnell Link</a><br />
-      <a href="{{components.durl}}" target="_blank">DigiKey Link</a><br />
-      <a href="{{components.murl}}" target="_blank">Mouser Link</a>
-      <a *ngFor="let history of history"> {{history.id}}</a> 
-    </div>
-
+  <div class="col-md-7 mt-1">
+    <app-info-octopart  [components]="components"></app-info-octopart>
   </div>
 
   <div class="col-md-5 pt-3 pb-2 mb-3 border-left">
     <app-usedreel-list ></app-usedreel-list>
   </div>
+
+
 
 </div>
 

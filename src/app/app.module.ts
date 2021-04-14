@@ -86,6 +86,12 @@ import { SecondstepComponent } from './BOM/tasklist/secondstep/secondstep.compon
 import { ThridstepComponent } from './BOM/tasklist/thridstep/thridstep.component';
 import { WebcamModule } from 'ngx-webcam';
 import { CameraComponent } from './fast-reg/camera/camera.component';
+import { UserHistoryComponent } from './user/user-history/user-history.component';
+import { GraphQLModule } from './graphql.module';
+import { InfoOctopartComponent } from './members/component-detail/info-octopart/info-octopart.component';
+import { HttpLinkModule } from 'apollo-angular-link-http';
+import { TechOctopartComponent } from './members/component-detail/info-octopart/tech-octopart/tech-octopart.component';
+import { SellersOctopartComponent } from './members/component-detail/info-octopart/sellers-octopart/sellers-octopart.component';
 
 
 
@@ -133,6 +139,7 @@ export function tokenGetter(){
       AdminListComponent,
       HasRoleDirective,
       RolesModalComponent,
+      InfoOctopartComponent,
       UserComponent,
       UploadComponent,
       CreateComponent,
@@ -144,7 +151,10 @@ export function tokenGetter(){
       FirststepComponent,
       SecondstepComponent,
       ThridstepComponent,
-      CameraComponent
+      CameraComponent,
+      UserHistoryComponent,
+      TechOctopartComponent,
+      SellersOctopartComponent
    ],
    imports: [
       BrowserModule,
@@ -154,12 +164,16 @@ export function tokenGetter(){
       MatSidenavModule,
       MatDialogModule,
       CalendarModule,
+      GraphQLModule,
       NgxPrintModule,
       YouTubePlayerModule,
       DemoMaterialModule,
       AutocompleteLibModule,
       ReactiveFormsModule,
       QRCodeModule,
+      BrowserModule,
+      HttpClientModule,
+      HttpLinkModule,
       NgxBarcodeModule,
       ButtonsModule.forRoot(),
       MatNativeDateModule,
@@ -203,7 +217,8 @@ export function tokenGetter(){
            ['https://graph.microsoft.com/v1.0/me', ['user.read']]
          ],
          extraQueryParameters: {}
-       })
+       }),
+      GraphQLModule
 
    ],
    providers: [
@@ -212,6 +227,7 @@ export function tokenGetter(){
       AlertifyService,
       AuthGuard,
       ComponentService,
+      GraphQLModule,
       MemberDetailResolver,
       MemberListResolver,
       BsModalRef,

@@ -16,6 +16,8 @@ import { Reels } from "src/app/_models/Reels";
 import { ReelsListComponent } from "src/app/Reels/reels-list/reels-list.component";
 import { Photo } from "src/app/_models/photo";
 import { OdataService } from 'src/app/_services/odata.service';
+import { Apollo } from "apollo-angular";
+import gql from "graphql-tag";
 
 @Component({
   selector: "app-component-detail",
@@ -31,6 +33,7 @@ export class ComponentDetailComponent implements OnInit {
   galleryImages: NgxGalleryImage[];
   reels: Reels[];
 
+
   // tslint:disable-next-line: max-line-length
   constructor(
     private componentService: ComponentService,
@@ -38,14 +41,14 @@ export class ComponentDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private compareService: CompareService,
     private odataService: OdataService,
-    private router: Router
+    private router: Router,
+    private apollo: Apollo
   ) {}
 
   ngOnInit() {
     this.route.data.subscribe((data) => {
       this.components = data["components"];
     });
-
     this.galleryOptions = [
       {
         width: "500px",
@@ -109,7 +112,7 @@ export class ComponentDetailComponent implements OnInit {
         description: photo.description,
       });
     }
-    
+
     return imageUrls;
   }
 
@@ -128,4 +131,5 @@ export class ComponentDetailComponent implements OnInit {
       });
     });
   }
+
 }

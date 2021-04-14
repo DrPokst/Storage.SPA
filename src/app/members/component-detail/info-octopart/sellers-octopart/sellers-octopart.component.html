@@ -1,0 +1,57 @@
+<div class="row">
+  <div
+    *ngFor="let sellers of this.info.search.results[0].part.sellers"
+    class="card card-sm"
+    style="width: 18rem; height: auto"
+  >
+    <div
+      *ngIf="sellers.offers[0].inventory_level > 0"
+      class="card-header green"
+    >
+      <div>{{ sellers.company.name }}
+        {{sellers.offers.updated}}</div>
+    </div>
+    <div
+      *ngIf="sellers.offers[0].inventory_level === 0"
+      class="card-header red"
+    >
+      <div>{{ sellers.company.name }}</div>
+    </div>
+
+    <div class="card-body mb-0">
+      <a
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap text-center"
+      >
+      <a href="{{sellers.offers[0].click_url}} " target="_blank">{{sellers.offers[0].sku}}</a> <a class="text-center">   <i class="fa fa-globe"></i> {{ sellers.country }}</a></a
+      >
+      <a
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap text-center pt-1 mb-1 border-bottom"
+      >
+        Stock: {{ sellers.offers[0].inventory_level }} <a class="text-center"> MOQ: {{ sellers.offers[0].moq }} </a></a
+      >
+      <div class="row align-items-start">
+          <div class="col-sm-6 set"  *ngFor="let price of sellers.offers[0].prices">
+            <h6 class="listas" *ngIf="price.currency === 'USD' ">
+              {{ price.quantity }} @ {{ price.price }}{{ price.currency }}
+            </h6>
+            <h6 class="listas" *ngIf="price.currency === 'GBP'">
+              {{ price.quantity }} @ {{ price.price }}{{ price.currency }}
+            </h6>
+            <h6 class="listas" *ngIf="price.currency === 'EUR'">
+              {{ price.quantity }} @ {{ price.price }}{{ price.currency }}
+            </h6>
+            <h6 class="listas" *ngIf="price.currency === 'SGD'">
+            </h6>
+            <h6 class="listas" *ngIf="price.currency === 'JPY'">
+            </h6>
+        </div>
+      </div>
+
+    </div>
+    <div class="card-footer text-muted text-center mt-0">
+      <div class="listas">
+        {{sellers.offers[0].updated | date}}
+      </div>
+    </div>
+  </div>
+</div>

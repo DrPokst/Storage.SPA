@@ -64,6 +64,8 @@ getComponents(page?, itempsPerPage?, componentParams?): Observable<PaginatedResu
 
 getComponent(id): Observable<Components>{
   return this.http.get<Components>(this.baseUrl + 'component/' + id);
+
+
 }
 getComponentMnf(mnf): Observable<Components>{
   return this.http.get<Components>(this.baseUrl + 'component/mnf/' + mnf);

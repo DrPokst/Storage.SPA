@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-sm-2">
+    <img src="{{components.photoUrl}}" alt="..." class="img-thumbnail" style="height: 120px;">
+  </div>
+  <div class="col-sm-10">
+    <a *ngIf="this.info != null"  class="text-muted"> {{this.info.search.results[0].part.manufacturer.name}} </a>
+    <div><strong>{{components.mnf}}</strong> </div>
+    <div class="text-muted listas">{{components.detdescription}} </div>
+    <div class="row ml-1">
+      <a *ngIf="this.info != null"  class="btn btn-sm btn-outline-secondary ml-1" href="{{this.info.search.results[0].part.best_datasheet.url}}" target="_blank"> <i class="fa fa-file-pdf-o"></i> Datasheet</a>
+      <a *ngIf="this.info != null"  class="btn btn-sm btn-outline-secondary ml-1" href="{{this.info.search.results[0].part.manufacturer_url}}" target="_blank"> <i class="fa fa-globe"></i> Manufacturer</a>
+      <a *ngIf="this.info != null"  class="btn btn-sm btn-outline-secondary ml-1" href="{{this.info.search.results[0].part.octopart_url}}" target="_blank"> <i class="fas fa-cog"></i> Octopart</a>
+    </div>
+  </div>
+</div>
+<app-tech-octopart *ngIf="this.info != null" [info]="info"></app-tech-octopart>
+<app-sellers-octopart *ngIf="this.info != null" [info]="info"></app-sellers-octopart>
+

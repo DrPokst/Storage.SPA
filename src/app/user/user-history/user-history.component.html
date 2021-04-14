@@ -1,0 +1,50 @@
+<div class="mt-5">
+  <h1 class="h2">History</h1>
+  <div class="col-12 box border-top">
+    <div class="row">
+      <div btnRadio="" class="col-sm-1"><strong>Data</strong></div>
+      <div  class="col-sm-1 text-center"><strong>Component ID</strong></div>
+      <div  btnRadio="ID" class="col-sm-1 text-center"><strong>Reel ID</strong></div>
+      <div  btnRadio="Mnf" class="col-sm-2"><strong>Manufacturer number</strong></div>
+      <div class="col-sm-3">
+        <div class="row">
+          <div class="col-sm-4"><strong>Old Location</strong></div>
+          <div class="col-sm-2"><strong>-></strong></div>
+          <div class="col-sm-5"><strong>New Location</strong></div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="row">
+          <div class="col-sm-4"><strong>Old QTY</strong></div>
+          <div class="col-sm-3"><strong>-></strong></div>
+          <div class="col-sm-5"><strong>New QTY</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let historyy of history" class="col-12 box border-top">
+    <div class="row">
+      <div class="col-sm-1">{{historyy.dateAdded | date}}</div>
+      <div class="col-sm-1 text-center">{{historyy.componentasId}}</div>
+      <div class="col-sm-1 text-center">{{historyy.reelId}}</div>
+      <div class="col-sm-2">{{historyy.mnf}}</div>
+      <div class="col-sm-3">
+        <div class="row">
+          <div class="col-sm-4">{{historyy.oldLocation}}</div>
+          <div class="col-sm-2">-></div>
+          <div class="col-sm-5">{{historyy.newLocation}}</div>
+        </div>
+
+      </div>
+      <div class="col-sm-2">
+        <div class="row">
+          <div class="col-sm-4 text-center">{{historyy.oldQty}}</div>
+          <div class="col-sm-3">-></div>
+          <div class="col-sm-5 text-center">{{historyy.newQty}}</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+

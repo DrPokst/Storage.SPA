@@ -1,0 +1,16 @@
+.green{
+  background-color: #5c965d;
+}
+.red{
+  background-color: #81011ed8;
+}
+.card-body, .card-footer{
+  background-color: #213036c5;
+}
+.card{
+  color: white;
+  max-height: 300px;
+}
+.listas{
+  line-height: 70%;
+}
