@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular/apollo';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Search } from '../_models/octopart/octopart';
+import { Search } from '../_models/octopart/search';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,6 @@ export class OctopartService {
 
     return this.http.post(this.baseUrl + 'https://octopart.com/api/v4/endpoint', model);
 
-    this.que = this.apollo.query<any>
   }
 
 }

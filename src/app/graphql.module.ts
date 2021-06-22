@@ -5,13 +5,13 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { setContext } from 'apollo-link-context';
 import { ApolloLink } from 'apollo-link';
 
-const uri = '/api/v4/endpoint'; // <-- add the URL of the GraphQL server here
+const uri = 'http://octopart.com/api/v4/endpoint'; // <-- add the URL of the GraphQL server here
 
 export function createApollo(httpLink: HttpLink){
   const basic = setContext((operation, context) => ({
     headers: {
       Accept: 'charset=utf-8',
-
+      'Content-Type': 'text/plain'
     }
   }));
 

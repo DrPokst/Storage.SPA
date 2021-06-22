@@ -1,5 +1,5 @@
 {
-  "/api": {
+  "/api/*": {
     "target": "https://octopart.com",
     "secure": false,
     "changeOrigin": true

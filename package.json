@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxyconfig.json",
-    "build": "ng build",
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "build": "ng build ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -45,6 +45,7 @@
     "apollo-link-ws": "^1.0.20",
     "bootstrap": "^4.4.1",
     "bootswatch": "^4.4.1",
+    "cors": "^2.8.5",
     "faker": "^4.1.0",
     "font-awesome": "^4.7.0",
     "graphql": "^15.5.0",

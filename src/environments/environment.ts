@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:5000/api/',
-  lcUrl: 'http://lava.konversija.local:7048/LightConversion2018/OData/'
+  octoUrl: 'https://octopart.com/api/'
+
 };
 
 /*
