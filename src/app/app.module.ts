@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -38,7 +38,6 @@ import { ReelEditComponent } from "./Reels/reel-edit/reel-edit.component";
 import { HomeComponent } from "./home/home.component";
 import { RegisterComponent } from "./ALLregister/register/register.component";
 import { ErrorInterceptorProvider } from "./_services/error.interceptor";
-
 import { ListsComponent } from "./lists/lists.component";
 import { BOMComponent } from "./BOM/BOM.component";
 import { MemberListComponent } from "./members/member-list/member-list.component";
@@ -72,7 +71,6 @@ import { TakeReelComponent } from "./ReelLocations/take-reel/take-reel.component
 import { ReelCardDetailComponent } from "./Reels/reel-card-detail/reel-card-detail.component";
 import { BothComponent } from "./ReelLocations/both/both.component";
 import { HistoryComponent } from "./history/history.component";
-import { DialogComponent } from "./ReelLocations/put-reel/dialog/dialog.component";
 import { AutocompleteLibModule } from "angular-ng-autocomplete";
 import { FastRegComponent } from "./fast-reg/fast-reg.component";
 import { DemoMaterialModule } from "./material-module";
@@ -102,6 +100,7 @@ import { InfoOctopartComponent } from "./members/component-detail/info-octopart/
 import { HttpLinkModule } from "apollo-angular-link-http";
 import { TechOctopartComponent } from "./members/component-detail/info-octopart/tech-octopart/tech-octopart.component";
 import { SellersOctopartComponent } from "./members/component-detail/info-octopart/sellers-octopart/sellers-octopart.component";
+import { NgxColorsModule } from 'ngx-colors';
 
 const isIE =
   window.navigator.userAgent.indexOf("MSIE ") > -1 ||
@@ -142,7 +141,6 @@ export function tokenGetter() {
     ReelCardDetailComponent,
     BothComponent,
     HistoryComponent,
-    DialogComponent,
     FastRegComponent,
     AdminComponent,
     AdminCardComponent,
@@ -164,7 +162,7 @@ export function tokenGetter() {
     CameraComponent,
     UserHistoryComponent,
     TechOctopartComponent,
-    SellersOctopartComponent,
+    SellersOctopartComponent
   ],
   imports: [
     BrowserModule,
@@ -228,6 +226,7 @@ export function tokenGetter() {
       }
     ),
     GraphQLModule,
+    NgxColorsModule
   ],
   providers: [
     AuthService,
@@ -239,7 +238,6 @@ export function tokenGetter() {
     MemberDetailResolver,
     MemberListResolver,
     BsModalRef,
-    DialogComponent,
     ComponentEditResolver,
     UsedreelListResolver,
     { provide: MatDialogRef, useValue: {} },
@@ -250,6 +248,7 @@ export function tokenGetter() {
       useValue: { appearance: "fill" },
     },
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
+
   ],
   bootstrap: [AppComponent],
   entryComponents: [RolesModalComponent, CreateModalComponent],

@@ -1,6 +1,6 @@
 
- 
- 
+
+
 <button class="btn btn-sm btn-outline-secondary btn-block"  (click)="loadComparedReels()">
 SEARCH REELS
 </button>
@@ -14,7 +14,7 @@ SEARCH REELS
       <div class="col-sm-4"><mat-spinner class="center"></mat-spinner></div>
       <div class="col-sm-4"></div>
     </div>
-    
+
 </div>
 
 
@@ -36,7 +36,7 @@ SEARCH REELS
           <td>{{reels.qty}}</td>
           <td>{{reels.cMnf}}</td>
           <td>
-           <button *ngIf="reels.location !== '0'" class="myButton" (click)="TakeOut(reels.id)"><i class="fas fa-lightbulb" aria-hidden="true"></i> Turn on LED and take reel</button>
+           <button *ngIf="reels.location !== '0' && reels.location > 0" class="myButton" (click)="TakeOut(reels.id)"><i class="fas fa-lightbulb" aria-hidden="true"></i> Turn on LED and take reel {{reels.location}}</button>
           </td>
         </tr>
 

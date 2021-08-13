@@ -5,6 +5,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthService } from 'src/app/_services/auth.service';
 import { ReelService } from 'src/app/_services/reel.service';
 import { RolesModalComponent } from '../roles-modal/roles-modal.component';
+import { ColorEvent } from 'ngx-color';
 
 @Component({
   selector: 'app-admin-list',
@@ -16,6 +17,7 @@ export class AdminListComponent implements OnInit {
   users: User[];
   bsModalRef: BsModalRef;
   isrinkta: any[];
+  color: string = '';
 
   constructor(private reelService: ReelService,
               private authService: AuthService,
@@ -25,10 +27,13 @@ export class AdminListComponent implements OnInit {
   ngOnInit(): void {
     this.loadUsers();
   }
+
   turnOnAll()
   {
-    this.reelService.TurnOnAll().subscribe(() => {
+    var color = this.color.substring(1);
+    this.reelService.TurnOnAll(color).subscribe(() => {
       this.alertify.success('sekmingai ijungti visi');
+
     }, error => {
       this.alertify.error(error);
     });
@@ -51,7 +56,7 @@ export class AdminListComponent implements OnInit {
   }
 
   ChangeRole(username: string){
-    
+
     this.authService.changeRole(username, this.model).subscribe(() => {
       this.alertify.success('sekmingai pakeista');
       this.ngOnInit();
@@ -82,8 +87,6 @@ export class AdminListComponent implements OnInit {
         });
       }
     });
-
-
   }
 
   private getRolesArray(user){
@@ -114,5 +117,4 @@ export class AdminListComponent implements OnInit {
     }
     return roles;
   }
-
 }

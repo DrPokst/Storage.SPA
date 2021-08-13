@@ -9,6 +9,7 @@ import { ReelService } from 'src/app/_services/reel.service';
 import { AuthService } from 'src/app/_services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { FormControl, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usedreel-list',
@@ -31,7 +32,7 @@ export class UsedreelListComponent implements OnInit {
               private compareService: CompareService,
               private isLoadingService: IsLoadingService,
               public authService: AuthService) { }
-  
+
 
   ngOnInit() {
     const token = localStorage.getItem('token');
@@ -61,7 +62,12 @@ export class UsedreelListComponent implements OnInit {
   }
 
   TakeOut(id: any){
-
+    Swal.fire({
+      icon: 'info',
+      title: 'Pranešimas',
+      text: 'Pasiimkite ritę iš lentynos',
+      footer: '<a href>Nothing is happening?</a>'
+    })
     this.registerForm = new FormGroup(
       {
         ReelId: new FormControl(),
@@ -75,11 +81,18 @@ export class UsedreelListComponent implements OnInit {
 
     console.log(this.registerForm.value);
     this.reelService.TakeOut(this.registerForm.value).subscribe(() => {
-      this.alertify.success('sekmingai uzdegta');
+      this.ngOnInit();
+      Swal.fire(
+        {
+        icon: 'success',
+        title: 'Ritė išimta',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }, error => {
       this.alertify.error(error);
     });
     console.log(id);
-    
+
   }
 }

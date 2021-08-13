@@ -26,7 +26,6 @@ import { TakeReelComponent } from './ReelLocations/take-reel/take-reel.component
 import { ReelEditComponent } from './Reels/reel-edit/reel-edit.component';
 import { BothComponent } from './ReelLocations/both/both.component';
 import { HistoryComponent } from './history/history.component';
-import { DialogComponent } from './ReelLocations/put-reel/dialog/dialog.component';
 import { FastRegComponent } from './fast-reg/fast-reg.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
@@ -69,7 +68,6 @@ export const appRoutes: Routes = [
             {path: 'locations/take', component: TakeReelComponent},
             {path: 'locations/both', component: BothComponent},
             {path: 'members/history/:id', component: HistoryComponent, data: {roles: ['Admin']}},
-            {path: 'dialog', component: DialogComponent},
             {path: 'fast', component: FastRegComponent, data: {roles: ['Member']}},
             {path: 'admin', component: AdminComponent, data: {roles: ['Admin']}},
             {path: 'userinfo', component: UserComponent},

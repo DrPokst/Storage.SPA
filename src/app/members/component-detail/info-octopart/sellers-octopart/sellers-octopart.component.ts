@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Octopart } from 'src/app/_models/octopart/octopart';
+import { Data } from 'src/app/_models/octopart/octopart';
 
 @Component({
   selector: 'app-sellers-octopart',
@@ -7,7 +7,7 @@ import { Octopart } from 'src/app/_models/octopart/octopart';
   styleUrls: ['./sellers-octopart.component.css']
 })
 export class SellersOctopartComponent implements OnInit {
-  @Input() info: Octopart;
+  @Input() info: Data;
 
   constructor() { }
 

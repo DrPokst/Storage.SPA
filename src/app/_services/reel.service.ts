@@ -101,8 +101,8 @@ export class ReelService {
   TurnOffLed(id) {
     return this.http.put(this.baseUrl + 'led/off/' + id, id);
   }
-  TurnOnAll() {
-    return this.http.put(this.baseUrl + 'led/on/all', true);
+  TurnOnAll(color: any) {
+    return this.http.put(this.baseUrl + 'led/on/all/' + color, color);
   }
   TurnOffAll() {
     return this.http.put(this.baseUrl + 'led/off/all', true);
