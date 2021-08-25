@@ -35,6 +35,7 @@ import { ComplistComponent } from './BOM/complist/complist.component';
 import { UserReelsComponent } from './user/user-reels/user-reels.component';
 import { TasklistComponent } from './BOM/tasklist/tasklist.component';
 import { UserHistoryComponent } from './user/user-history/user-history.component';
+import { RegLocComponent } from './fast-reg/reg-loc/reg-loc.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -74,7 +75,8 @@ export const appRoutes: Routes = [
             {path: 'userinfo/reels', component: UserReelsComponent},
             {path: 'userinfo/history', component: UserHistoryComponent},
             {path: 'bom/:name', component: ComplistComponent},
-            {path: 'task/:name', component: TasklistComponent}
+            {path: 'task/:name', component: TasklistComponent},
+            {path: 'fast/2', component: RegLocComponent}
         ]
     },
 

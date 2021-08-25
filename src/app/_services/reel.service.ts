@@ -86,6 +86,9 @@ export class ReelService {
   registerReel(model: any) {
     return this.http.post(this.baseUrl + 'reel/registerreel', model);
   }
+  registerReelWithLocation(model: any) {
+    return this.http.post(this.baseUrl + 'reel/registerreel/stringlocation', model);
+  }
   TakeOut(model: any) {
     return this.http.post(this.baseUrl + 'location', model);
   }

@@ -101,6 +101,7 @@ import { HttpLinkModule } from "apollo-angular-link-http";
 import { TechOctopartComponent } from "./members/component-detail/info-octopart/tech-octopart/tech-octopart.component";
 import { SellersOctopartComponent } from "./members/component-detail/info-octopart/sellers-octopart/sellers-octopart.component";
 import { NgxColorsModule } from 'ngx-colors';
+import { RegLocComponent } from "./fast-reg/reg-loc/reg-loc.component";
 
 const isIE =
   window.navigator.userAgent.indexOf("MSIE ") > -1 ||
@@ -153,6 +154,7 @@ export function tokenGetter() {
     CreateComponent,
     ComplistComponent,
     CreateModalComponent,
+    RegLocComponent,
     UserReelsComponent,
     PhotoEditComponent,
     TasklistComponent,

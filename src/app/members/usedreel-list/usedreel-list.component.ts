@@ -39,6 +39,7 @@ export class UsedreelListComponent implements OnInit {
     if (token){
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
     }
+    this.loadComparedReels();
   }
 
 
@@ -59,6 +60,22 @@ export class UsedreelListComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
+  }
+
+  Checking(id: any){
+    Swal.fire({
+      title: 'Ar tikrai norite pasiimti komponentą iš lentynos?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: `Taip`,
+      denyButtonText: `Nusprendžiau, kad nereikia`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.TakeOut(id);
+      } else if (result.isDenied) {
+      }
+    })
   }
 
   TakeOut(id: any){
