@@ -102,6 +102,8 @@ import { TechOctopartComponent } from "./members/component-detail/info-octopart/
 import { SellersOctopartComponent } from "./members/component-detail/info-octopart/sellers-octopart/sellers-octopart.component";
 import { NgxColorsModule } from 'ngx-colors';
 import { RegLocComponent } from "./fast-reg/reg-loc/reg-loc.component";
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 const isIE =
   window.navigator.userAgent.indexOf("MSIE ") > -1 ||
@@ -185,6 +187,7 @@ export function tokenGetter() {
     HttpClientModule,
     HttpLinkModule,
     NgxBarcodeModule,
+    NgxPaginationModule,
     ButtonsModule.forRoot(),
     MatNativeDateModule,
     PaginationModule.forRoot(),

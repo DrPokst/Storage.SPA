@@ -114,7 +114,8 @@ export class FastRegComponent implements OnInit {
       icon: 'info',
       title: 'Pranešimas',
       text: 'Put the reel on the shelf',
-      footer: '<a href>Nothing is happening?</a>'
+      footer: '<a href>Nothing is happening?</a>',
+      showConfirmButton: false
     })
     this.model2.Mnf = this.mnf;
     this.model2.Id = this.id;

@@ -57,7 +57,7 @@
 
 
       <div class="d-flex justify-content-center mt-2">
-        <pagination *ngIf="pagination" [boundaryLinks]="true" [totalItems]="pagination.totalItems"
+        <pagination *ngIf="pagination" [maxSize]="8" [rotate]="true" [boundaryLinks]="true" [totalItems]="pagination.totalItems"
           [itemsPerPage]="pagination.itempsPerPage" [(ngModel)]="pagination.currentPage"
           (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
           lastText="&raquo;">
@@ -65,7 +65,6 @@
         </pagination>
 
       </div>
-
     </div>
     <div class="col-md-5 pt-3 pb-2 mb-3 border-left">
 

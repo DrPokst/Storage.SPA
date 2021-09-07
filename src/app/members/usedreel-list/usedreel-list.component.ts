@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { FormControl, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-usedreel-list',
@@ -22,6 +23,10 @@ export class UsedreelListComponent implements OnInit {
   jwtHelper = new JwtHelperService();
   suma = 0;
   ilgis = 0;
+
+  model: any = {};
+  model2: any = {};
+  user: any = {};
   loading = true;
   kint = 0;
   registerForm: FormGroup;
@@ -40,6 +45,7 @@ export class UsedreelListComponent implements OnInit {
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
     }
     this.loadComparedReels();
+    this.GetName();
   }
 
 
@@ -111,5 +117,59 @@ export class UsedreelListComponent implements OnInit {
     });
     console.log(id);
 
+  }
+  Checking2(id: any){
+    Swal.fire({
+      title: 'Ar tikrai norite pasiimti komponentą iš lentynos?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: `Taip`,
+      denyButtonText: `Nusprendžiau, kad nereikia`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.TakeOut2(id);
+      } else if (result.isDenied) {
+      }
+    })
+  }
+
+  TakeOut2(id: any){
+    Swal.fire({
+      icon: 'info',
+      title: 'Pranešimas',
+      text: 'Pasiimkite ritę iš lentynos',
+      footer: '<a href>Nothing is happening?</a>'
+    })
+
+    this.model2.Id = id;
+    this.model2.QTY = 0;
+    this.model2.UserId = this.model.UserId;
+    this.reelService.SetLocationWithLocation(this.model2).subscribe(() => {
+      this.ngOnInit();
+      Swal.fire(
+        {
+        icon: 'success',
+        title: 'Komponetas pasiimtas',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }, error => {
+      this.alertify.error(error);
+    });
+    console.log(id);
+
+  }
+  GetName() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.authService.decodedToken = this.jwtHelper.decodeToken(token);
+      this.authService.getUserInfo(this.authService.decodedToken.unique_name).subscribe((user: User) => {
+        this.user = user;
+        this.model.UserId = this.user.id;
+      }, error => {
+        console.log(error);
+      });
+    }
   }
 }

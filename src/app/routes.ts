@@ -69,7 +69,7 @@ export const appRoutes: Routes = [
             {path: 'locations/take', component: TakeReelComponent},
             {path: 'locations/both', component: BothComponent},
             {path: 'members/history/:id', component: HistoryComponent, data: {roles: ['Admin']}},
-            {path: 'fast', component: FastRegComponent, data: {roles: ['Member']}},
+            {path: 'fast', component: FastRegComponent},
             {path: 'admin', component: AdminComponent, data: {roles: ['Admin']}},
             {path: 'userinfo', component: UserComponent},
             {path: 'userinfo/reels', component: UserReelsComponent},

@@ -95,6 +95,9 @@ export class ReelService {
   SetLocation(model: any) {
     return this.http.post(this.baseUrl + 'location/put', model);
   }
+  SetLocationWithLocation(model: any) {
+    return this.http.post(this.baseUrl + 'location/put/withlocation', model);
+  }
   ResetLocation(model: any) {
     return this.http.post(this.baseUrl + 'location/take', model);
   }

@@ -1,46 +1,48 @@
+<h3 class="text-center">
 
 
+    Ritės</h3>
 
-<h3 class="text-center" >Ritės</h3>
 
-
-  <div>
+<div>
     <table class="table mt-2">
-      <thead>
-        <tr>
-          <th scope="col">Rites Nr.</th>
-          <th scope="col">Kiekis </th>
-          <th scope="col">Mnf </th>
-          <th scope="col">Rites vieta</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let reels of reels">
-          <td>{{reels.id}}</td>
-          <td>{{reels.qty}}</td>
-          <td>{{reels.cMnf}}</td>
-          <td  *ngIf="reels.location !== '0' && reels.location > 0">
-           <button class="myButton" (click)="Checking(reels.id)"><i class="fas fa-lightbulb" aria-hidden="true"></i> Turn on LED and take reel {{reels.location}}</button>
-          </td>
-          <td *ngIf="reels.location !== '0'">{{reels.location}}</td>
-        </tr>
+        <thead>
+            <tr>
+                <th scope="col">Rites Nr.</th>
+                <th scope="col">Kiekis </th>
+                <th scope="col">Mnf </th>
+                <th scope="col">Rites vieta</th>
+                <th *appHasRole="['Member']" scope="col">Veiksmas</th>
+                <th *appHasRole="['Moderator', 'Admin']" scope="col">Admin veiksmai</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reels of reels">
+                <td>{{reels.id}}</td>
+                <td>{{reels.qty}}</td>
+                <td>{{reels.cMnf}}</td>
+                <td>{{reels.location | uppercase}}</td>
+                <td *appHasRole="['Member']">
+                    <button *ngIf="reels.location > 0" class="myButton" (click)="Checking(reels.id)"><i class="fas fa-lightbulb" aria-hidden="true"></i> Paimti ritę iš {{reels.location}}</button>
+                </td>
+                <td *appHasRole="['Moderator', 'Admin']"><button class="myButton" (click)="Checking2(reels.id)"><i class="fas fa-lightbulb" aria-hidden="true"></i> Take it {{reels.location}}</button></td>
+            </tr>
 
-      </tbody>
-      <thead>
-        <tr>
-          <th scope="col">Viso ričių</th>
-          <th scope="col">Bendras kiekis </th>
-          <th scope="col"> </th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ilgis}}</td>
-          <td>{{suma}}</td>
-          <td></td>
-        </tr>
-      </tbody>
+        </tbody>
+        <thead>
+            <tr>
+                <th scope="col">Viso ričių</th>
+                <th scope="col">Bendras kiekis </th>
+                <th scope="col"> </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ilgis}}</td>
+                <td>{{suma}}</td>
+                <td></td>
+            </tr>
+        </tbody>
     </table>
-  </div>
-
+</div>
