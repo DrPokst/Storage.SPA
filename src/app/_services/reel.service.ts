@@ -80,6 +80,9 @@ export class ReelService {
   getReelMnf(mnf): Observable<Reels> {
     return this.http.get<Reels>(this.baseUrl + 'reel/PagalMnf/' + mnf);
   }
+  getReelsLocation(location): Observable<Reels[]> {
+    return this.http.get<Reels[]>(this.baseUrl + 'reel/ListByLocation/' + location);
+  }
   updateReel(id: number, reel: Reels) {
     return this.http.put(this.baseUrl + 'reel/' + id, reel);
   }

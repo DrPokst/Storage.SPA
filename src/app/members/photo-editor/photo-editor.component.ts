@@ -21,7 +21,7 @@ export class PhotoEditorComponent implements OnInit {
   response: string;
   baseUrl = environment.apiUrl;
 
-  constructor(private authService: AuthService, private route: ActivatedRoute, private alertify: AlertifyService, 
+  constructor(private authService: AuthService, private route: ActivatedRoute, private alertify: AlertifyService,
     private componentService: ComponentService) { }
 
   ngOnInit(): void {
@@ -62,6 +62,16 @@ export class PhotoEditorComponent implements OnInit {
       this.componentService.deletePhoto(this.photos.findIndex(p => p.id === id), id).subscribe(() => {
         this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
         this.alertify.success('photo has been deleted');
+      }, error => {
+        this.alertify.error('Failed to deltete the photo');
+      });
+    });
+  }
+  setMain(id: Number){
+    this.alertify.confirm('Ar tikrai norite padaryti šią nuotrauka pagrindine?', ()=> {
+      this.componentService.setMainPhoto(this.photos.findIndex(p => p.id === id), id).subscribe(() => {
+        this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
+        this.alertify.success('pagrindinė nuotrauka pakeista');
       }, error => {
         this.alertify.error('Failed to deltete the photo');
       });

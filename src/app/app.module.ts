@@ -103,6 +103,8 @@ import { SellersOctopartComponent } from "./members/component-detail/info-octopa
 import { NgxColorsModule } from 'ngx-colors';
 import { RegLocComponent } from "./fast-reg/reg-loc/reg-loc.component";
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FastComponentregComponent } from "./ALLregister/fast-componentreg/fast-componentreg.component";
+import { ListByVarComponent } from "./lists/listByVar/listByVar.component";
 
 
 const isIE =
@@ -120,6 +122,7 @@ export function tokenGetter() {
     HomeComponent,
     RegisterComponent,
     ListsComponent,
+    ListByVarComponent,
     MemberListComponent,
     MessagesComponent,
     ComponentCardComponent,
@@ -144,12 +147,13 @@ export function tokenGetter() {
     ReelCardDetailComponent,
     BothComponent,
     HistoryComponent,
-    FastRegComponent,
+    FastComponentregComponent,
     AdminComponent,
     AdminCardComponent,
     AdminListComponent,
     HasRoleDirective,
     RolesModalComponent,
+    FastRegComponent,
     InfoOctopartComponent,
     UserComponent,
     UploadComponent,

@@ -1,0 +1,36 @@
+<p class="mt-2">
+    Pasrinktas location: {{this.location}}
+</p>
+
+<table mat-table [dataSource]="this.reels" class="my-table">
+
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="CMnf">
+        <th mat-header-cell *matHeaderCellDef> Gamintojo numeris </th>
+        <td mat-cell *matCellDef="let element"> {{element.cMnf}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="componentasId">
+        <th mat-header-cell *matHeaderCellDef> Komponento id </th>
+        <td mat-cell *matCellDef="let element"> {{element.componentasId}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="qty">
+        <th mat-header-cell *matHeaderCellDef> Kiekis </th>
+        <td mat-cell *matCellDef="let element"> {{element.qty}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Registration Form</h1>
+</div>
+
+<form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <div class="col-lg-12 well">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6 input-group-sm ">
+                        <label>Buhalterinis</label>
+                        <input type="text" formControlName="BuhNr" placeholder="Enter BuhNr.." class="form-control">
+                    </div>
+                    <div class="col-sm-6 input-group-sm">
+                        <label>Manufacturer Number</label>
+                        <input type="text" formControlName="Mnf" placeholder="Enter Manufacturer Number.." class="form-control form-control-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5">
+            <button [disabled]="!registerForm.valid" class="btn btn-sm btn-outline-secondary btn-block" type="submit"><i class="fa fa-check mr-2"></i>Register</button>
+        </div>
+    </div>
+</form>

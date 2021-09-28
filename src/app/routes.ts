@@ -36,6 +36,7 @@ import { UserReelsComponent } from './user/user-reels/user-reels.component';
 import { TasklistComponent } from './BOM/tasklist/tasklist.component';
 import { UserHistoryComponent } from './user/user-history/user-history.component';
 import { RegLocComponent } from './fast-reg/reg-loc/reg-loc.component';
+import { FastComponentregComponent } from './ALLregister/fast-componentreg/fast-componentreg.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -58,6 +59,7 @@ export const appRoutes: Routes = [
             {path: 'lists', component: ListsComponent},
             {path: 'calendar', component: CalendarComponent},
             {path: 'register/component', component: ComponentregisterComponent},
+            {path: 'register/component/fast', component: FastComponentregComponent},
             {path: 'register/reel', component: ReelregisterComponent},
             {path: 'azure', component: AzureloginComponent},
             {path: 'reels', component: ReelsListComponent},
@@ -76,7 +78,8 @@ export const appRoutes: Routes = [
             {path: 'userinfo/history', component: UserHistoryComponent},
             {path: 'bom/:name', component: ComplistComponent},
             {path: 'task/:name', component: TasklistComponent},
-            {path: 'fast/2', component: RegLocComponent}
+            {path: 'fast/2', component: RegLocComponent},
+            {path: 'lists', component: ListsComponent}
         ]
     },
 

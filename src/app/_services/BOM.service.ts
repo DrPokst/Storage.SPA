@@ -12,7 +12,7 @@ import { xBomList } from '../_models/xBomList';
 })
 export class BOMService {
   baseUrl = environment.apiUrl;
-  
+
 constructor(private http: HttpClient) { }
 
 public importFromFile(bstr: string): XLSX.AOA2SheetOpts {
@@ -32,11 +32,15 @@ public importFromFile(bstr: string): XLSX.AOA2SheetOpts {
 UploadBom(model: any) {
   return this.http.post(this.baseUrl + 'bom', model);
 }
-
+UpdateList(model: any){
+  return this.http.put(this.baseUrl + 'bom/update', model);
+}
 GetBomNames(): Observable<BomName[]>{
   return this.http.get<BomName[]>(this.baseUrl + 'bom');
 }
-
+DeleteList(id: number){
+  return this.http.delete(this.baseUrl + 'bom/deletelistline/' + id);
+}
 deleteBom(bomName: string) {
   return this.http.delete(this.baseUrl + 'bom/' + bomName);
 }

@@ -20,7 +20,8 @@ export class BOMComponent implements OnInit {
   bomNames: BomName[];
   taskNames: TaskName[];
   emitter: number;
-
+  displayedColumns: string[] = ['name', 'dateAdded', 'lastModified', 'action'];
+  displayedColumns2: string[] = ['status', 'taskName', 'bomName', 'dateAdded', 'lastModified', 'action'];
   constructor(private router: Router, private bomService: BOMService, private alertify: AlertifyService, private taskService: TaskService) { }
 
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class BOMComponent implements OnInit {
     });
   }
 
-  
+
 
 deleteBom(name: string){
   swalWithBootstrapButtons.fire({

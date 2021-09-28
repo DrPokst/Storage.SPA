@@ -83,9 +83,15 @@ updateComponent(id: number, component: Components){
 registerComponent(model: any){
   return this.http.post(this.baseUrl + 'component/registercomponent', model);
 }
+fastregisterComponent(model: any){
+  return this.http.post(this.baseUrl + 'component/registercomponent/short', model);
+}
 
 deletePhoto(componentId: number, id: number){
-  return this.http.delete(this.baseUrl + 'component/' + componentId + '/photos/' + id);
+  return this.http.delete(this.baseUrl + "search/" + componentId + "/photos/" + id);
+}
+setMainPhoto(componentId: number, id: any){
+  return this.http.get(this.baseUrl + "search/" + componentId + "/photos/setmain/" + id);
 }
 
 deleteComponent(componentId: NumberConstructor){
